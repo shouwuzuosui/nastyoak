@@ -1,169 +1,84 @@
-/* ----------------- 通用 ----------------- */
 * {
   box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  background: linear-gradient(135deg, #f2f4ff, #ffffff);
-  color: #222;
+  font-family: system-ui, sans-serif;
+  background: linear-gradient(135deg, #eef1ff, #ffffff);
 }
 
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-/* ----------------- Header ----------------- */
 header {
   padding: 16px 24px;
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid #e5e5e5;
-  background: #fff;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-  position: sticky;
-  top: 0;
-  z-index: 10;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
 }
 
-header h1 {
-  margin: 0;
-  font-size: 24px;
+.top-tools {
   display: flex;
-  align-items: center;
   gap: 10px;
-}
-
-header h1::before {
-  content: "🧭";
-  font-size: 24px;
-}
-
-#datetime {
-  font-size: 14px;
-  color: #666;
-  margin-right: 20px;
-  white-space: nowrap;
-}
-
-/* ----------------- 搜索栏 ----------------- */
-.search-bar {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
   align-items: center;
 }
 
-.search-bar form {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.search-bar input[type="text"] {
-  padding: 6px 12px;
-  border-radius: 20px;
+.top-tools input {
+  padding: 6px 8px;
+  border-radius: 6px;
   border: 1px solid #ccc;
-  font-size: 14px;
-  width: 140px;
-  transition: all 0.2s;
 }
 
-.search-bar input[type="text"]:focus {
-  outline: none;
-  border-color: #4285F4;
-  box-shadow: 0 0 6px rgba(66,133,244,0.5);
+#ipinfo {
+  font-size: 13px;
+  color: #555;
 }
 
-.search-bar input[type="submit"] {
-  padding: 6px 12px;
-  border-radius: 20px;
-  border: none;
-  background-color: #4285F4;
-  color: #fff;
-  cursor: pointer;
-  font-size: 14px;
-  transition: background 0.2s;
-}
-
-.search-bar input[type="submit"]:hover {
-  background-color: #3367d6;
-}
-
-/* ----------------- 主体 ----------------- */
 main {
   padding: 24px;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(260px,1fr));
   gap: 20px;
 }
 
 .category {
-  background: #ffffff;
-  border-radius: 16px;
-  padding: 20px;
+  background: #fff;
+  border-radius: 14px;
+  padding: 16px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.category:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 28px rgba(0,0,0,0.08);
 }
 
 .category h2 {
-  margin: 0 0 16px 0;
-  font-size: 18px;
-  color: #333;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-/* 分类图标 */
-.category:nth-child(1) h2::before { content: "🖥️"; }
-.category:nth-child(2) h2::before { content: "🌐"; }
-.category:nth-child(3) h2::before { content: "🛒"; }
-.category:nth-child(4) h2::before { content: "🤖"; }
-.category:nth-child(5) h2::before { content: "🛠️"; }
-.category:nth-child(6) h2::before { content: "🎬"; }
-
-.links {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+  margin-top: 0;
+  font-size: 16px;
 }
 
 .links a {
   display: flex;
-  align-items: center;
-  padding: 10px 14px;
-  border-radius: 12px;
-  background: #f9f9f9;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.03);
-  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+  padding: 8px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #333;
 }
 
 .links a:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(0,0,0,0.08);
-  background: #f0f4ff;
+  background: #f0f2f5;
 }
 
-.links img {
-  width: 18px;
-  height: 18px;
-  margin-right: 10px;
+.favorite {
+  border: 2px solid #ffd700;
 }
 
-/* ----------------- Footer ----------------- */
+pre {
+  background: #f7f7f7;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 13px;
+  overflow-x: auto;
+}
+
 footer {
-  padding: 16px;
   text-align: center;
-  color: #888;
+  padding: 12px;
   font-size: 12px;
+  color: #888;
 }

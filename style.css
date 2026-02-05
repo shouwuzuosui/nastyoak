@@ -1,158 +1,141 @@
-/* ========== 全局基础样式 ========== */
+/* style.css */
+/* ========== 基础样式 ========== */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box; /* 盒模型更易控制 */
-  font-family: "Helvetica Neue", Arial, sans-serif; /* 通用字体 */
+ margin: 0;
+ padding: 0;
+ box-sizing: border-box;
+ font-family: "微软雅黑", sans-serif;
 }
 
 body {
-  background-color: #f9f9f9; /* 页面背景色，柔和不刺眼 */
-  color: #333; /* 正文文字主色 */
-  line-height: 1.5; /* 行高更易读 */
+ background-color: #f8f9fa;
+ color: #333;
+ line-height: 1.6;
 }
 
-
-/* ========== 头部导航栏 ========== */
 header {
-  background-color: #2e7d32; /* 深绿色导航栏，显质感 */
-  padding: 1rem 2rem; /* 上下内边距1rem，左右2rem */
-  display: flex; /* 弹性布局，方便元素对齐 */
-  flex-direction: column; /* 子元素垂直排列（标题+搜索栏） */
-  align-items: center; /* 水平居中 */
-  gap: 1rem; /* 子元素之间的间距 */
+ text-align: center;
+ padding: 2rem 0;
+ background-color: #2e8b57;
+ color: #fff;
 }
 
-.header-title {
-  color: #fff; /* 标题文字白色 */
-  font-size: 1.5rem; /* 字号适中 */
-  font-weight: 600; /* 字体稍粗，突出标题 */
+header h1 {
+ font-size: 1.8rem;
+ font-weight: 600;
+ letter-spacing: 1px;
 }
 
-/* 搜索栏容器：并排两个搜索框 */
 .search-bar {
-  display: flex; /* 弹性布局，让输入框/按钮并排 */
-  gap: 1rem; /* 输入框/按钮之间的间距 */
-  width: 100%; /* 宽度占满父容器 */
-  max-width: 600px; /* 搜索栏最大宽度，避免太宽 */
+ display: flex;
+ justify-content: center;
+ margin-top: 1rem;
 }
 
-/* 搜索输入框通用样式 */
-.search-input {
-  flex: 1; /* 输入框占剩余宽度（自动拉伸） */
-  padding: 0.6rem 1rem; /* 内边距，让点击区域更大 */
-  border: none; /* 去掉默认边框 */
-  border-radius: 4px; /* 圆角，柔和风格 */
-  font-size: 0.9rem; /* 输入文字字号 */
+.search-bar form {
+ display: flex;
+ flex-grow: 1;
+ min-width: 200px;
+ max-width: 400px;
 }
 
-/* 搜索按钮通用样式 */
-.search-btn {
-  padding: 0.6rem 1.2rem; /* 内边距 */
-  border: none; /* 去掉默认边框 */
-  border-radius: 4px; /* 圆角 */
-  background-color: #fff; /* 按钮背景白 */
-  color: #2e7d32; /* 按钮文字用导航栏绿色，呼应主题 */
-  font-weight: 600; /* 字体稍粗 */
-  cursor: pointer; /* 鼠标悬浮变手型，提示可点击 */
-  transition: background-color 0.2s; /*  hover 动画过渡 */
+.search-bar input[type="text"] {
+ padding: 0.5rem;
+ border: none;
+ border-radius: 4px 0 0 4px;
+ width: 100%;
+ font-size: 0.95rem;
+ color: #555;
+ transition: all 0.3s ease;
 }
 
-/* 搜索按钮悬浮效果 */
-.search-btn:hover {
-  background-color: #eee; /* 浅灰背景，反馈交互 */
+.search-bar input[type="text"]:focus {
+ outline: none;
+ border-color: #3cb371;
+ box-shadow: 0 0 0 3px rgba(60, 179, 113, 0.15);
 }
 
+.search-bar input[type="submit"] {
+ padding: 0.5rem 1rem;
+ border: none;
+ border-radius: 0 4px 4px 0;
+ background-color: #3cb371;
+ color: white;
+ cursor: pointer;
+ transition: all 0.3s ease;
+ font-size: 0.95rem;
+}
 
-/* ========== 分类区块（VPS/域名/工具等） ========== */
+.search-bar input[type="submit"]:hover {
+ background-color: #2e8b57;
+ transform: translateY(-1px);
+ box-shadow: 0 4px 8px rgba(46, 139, 87, 0.25);
+}
+
+/* ========== 主内容区 ========== */
+main {
+ padding: 32px 28px;
+ max-width: 1400px;
+ margin: 0 auto;
+ display: grid;
+ grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+ gap: 1rem;
+}
+
 .category {
-  margin: 2rem 2rem 3rem; /* 分类之间的上下间距（底部稍大，区分感更强） */
+ margin-bottom: 2rem;
 }
 
-/* 分类标题样式（带浅彩背景，区分不同板块） */
-.category-title {
-  background-color: #eaf5ff; /* 浅蓝背景，柔和区分 */
-  padding: 0.5rem 1rem; /* 内边距 */
-  font-size: 1.1rem; /* 字号 */
-  font-weight: 600; /* 字体粗细 */
-  color: #2e7d32; /* 文字用导航栏绿色，保持主题统一 */
-  border-radius: 4px 4px 0 0; /* 只给顶部加圆角，和下方面板衔接 */
-  margin-bottom: 1rem; /* 标题和下方列表的间距 */
+.category h2 {
+ font-size: 1.25rem;
+ font-weight: 700;
+ margin-bottom: 1rem;
+ position: relative;
+ padding-left: 1rem;
 }
 
-/* 链接列表容器：用网格布局实现「自动换行+等宽卡片」 */
-.links-list {
-  list-style: none; /* 去掉默认列表圆点 */
-  display: grid; /* 网格布局 */
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* 自动适配列数，最小200px，最大占满一行 */
-  gap: 1rem; /* 卡片之间的间距 */
+.category h2::before {
+ content: "";
+ position: absolute;
+ left: 0;
+ top: 50%;
+ transform: translateY(-50%);
+ width: 3px;
+ height: 1.2em;
+ background-color: #2e8b57;
 }
 
-/* 单个链接卡片样式 */
-.links-item {
-  display: flex; /* 图标+文字水平对齐 */
-  align-items: center; /* 垂直居中 */
-  background-color: #fff; /* 卡片背景白 */
-  padding: 0.8rem; /* 内边距 */
-  border: 1px solid #eee; /* 浅灰边框，增加层次感 */
-  border-radius: 6px; /* 圆角，柔和风格 */
-  box-shadow: 0 2px 4px rgba(0,0,0,0.03); /* 浅阴影，让卡片「浮」起来 */
-  transition: all 0.2s ease; /* 所有动画过渡（hover 时更丝滑） */
-  cursor: pointer; /* 鼠标悬浮变手型 */
+.cards {
+ display: grid;
+ grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+ gap: 1rem;
+ padding: 0 1rem;
 }
 
-/* 链接卡片悬浮效果：上移+阴影放大，增强交互感 */
-.links-item:hover {
-  transform: translateY(-2px); /* 向上移动2px */
-  box-shadow: 0 4px 8px rgba(0,0,0,0.06); /* 阴影加深 */
+.card {
+ background-color: #fff;
+ padding: 1rem;
+ border-radius: 8px;
+ box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+ transition: all 0.2s ease;
+ display: flex;
+ align-items: center;
+ cursor: pointer;
 }
 
-/* 链接图标样式（如果是 SVG/Font Awesome 图标，需对应调整） */
-.links-icon {
-  width: 20px; /* 图标宽度 */
-  height: 20px; /* 图标高度 */
-  margin-right: 0.8rem; /* 图标和文字间距 */
-  fill: currentColor; /* 图标颜色继承父元素（文字色） */
+.card:hover {
+ transform: translateY(-2px);
+ box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* 链接文字样式 */
-.links-text {
-  color: #444; /* 文字浅灰，比纯黑柔和 */
-  font-size: 0.95rem; /* 字号适中 */
-  text-decoration: none; /* 去掉默认下划线 */
+.card img {
+ width: 24px;
+ height: 24px;
+ margin-right: 0.75rem;
+ object-fit: contain;
 }
 
-/* 链接文字悬浮效果：下划线出现，提示可点击 */
-.links-text:hover {
-  text-decoration: underline; 
-}
-
-
-/* ========== 响应式：适配手机/平板 ========== */
-@media (max-width: 768px) {
-  /* 小屏幕下，头部标题左对齐（更紧凑） */
-  header {
-    align-items: flex-start; 
-  }
-
-  /* 搜索栏从「并排」改为「上下堆叠」 */
-  .search-bar {
-    flex-direction: column; 
-    width: 100%; 
-  }
-
-  .search-input, .search-btn {
-    width: 100%; /* 输入框/按钮占满宽度 */
-    margin-bottom: 0.5rem; /* 元素之间的垂直间距 */
-  }
-
-  /* 分类区块缩小左右间距 */
-  .category {
-    margin: 1.5rem; 
-  }
-
-  /* 链接列表从「多列」改为「单列」，适配手机竖屏 */
-  .links-list {
-    grid-template-columns: 1fr; 
-  }
+.card span {
+ font-size: 1rem;
+ color: #495057;
 }

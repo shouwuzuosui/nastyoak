@@ -2,7 +2,7 @@
 body {
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: #f9f9f9;
+  background: #f0f0f0;
 }
 
 /* ---------- 顶部导航 ---------- */
@@ -14,13 +14,13 @@ header {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 20px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  padding: 12px 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   z-index: 100;
 }
 
 header h1 {
-  font-size: 20px;
+  font-size: 22px;
   margin: 0;
   color: #333;
 }
@@ -33,14 +33,14 @@ header h1 {
 
 .search-bar input[type="text"] {
   padding: 6px 10px;
-  border-radius: 5px;
+  border-radius: 6px;
   border: 1px solid #ccc;
 }
 
 .search-bar input[type="submit"] {
   padding: 6px 12px;
   border: none;
-  border-radius: 5px;
+  border-radius: 6px;
   background: #ff3b3f;
   color: #fff;
   cursor: pointer;
@@ -61,14 +61,17 @@ main {
 
 /* ---------- 卡片样式 ---------- */
 .card {
-  background: #fff;
-  border-radius: 12px;
-  padding: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  background: linear-gradient(135deg, var(--card-color, #fff) 0%, #fff 100%);
+  border-radius: 14px;
+  padding: 14px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
   display: flex;
   align-items: center;
   gap: 10px;
-  transition: transform 0.2s, box-shadow 0.2s;
+  font-weight: 500;
+  color: #333;
+  text-decoration: none;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .card img {
@@ -77,19 +80,20 @@ main {
 }
 
 .card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.15);
 }
 
 /* ---------- 分类标题 ---------- */
 .category-title {
   grid-column: 1/-1;
-  font-size: 18px;
+  font-size: 20px;
+  font-weight: 600;
   color: #222;
   margin-top: 30px;
   margin-bottom: 10px;
-  border-left: 4px solid #ff3b3f;
-  padding-left: 8px;
+  border-left: 6px solid var(--cat-color, #ff3b3f);
+  padding-left: 10px;
 }
 
 /* ---------- Footer ---------- */

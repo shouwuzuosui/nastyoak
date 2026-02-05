@@ -1,158 +1,218 @@
-/* ---------- 全局 ---------- */
-body {
-  margin: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: #f5f5f5; /* 白色系背景（比纯白更柔和） */
-  color: #333;         /* 文字深灰，提升可读性 */
-}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+ <meta charset="UTF-8">
+ <title>我的现代彩色导航</title>
+ <style>
+ /* ========== 全局样式 ========== */
+ * {
+ margin: 0;
+ padding: 0;
+ box-sizing: border-box;
+ font-family: "微软雅黑", sans-serif;
+ }
 
-/* ---------- 顶部导航 ---------- */
-header {
-  position: sticky;
-  top: 0;
-  background: #fff;    /* 导航栏纯白背景 */
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  padding: 12px 20px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); /* 浅阴影，弱化存在感 */
-  z-index: 100;
-}
+ body {
+ background-color: #f8f9fa; /* 浅灰背景，降低视觉压迫 */
+ color: #333; /* 整体文字色 */
+ line-height: 1.6;
+ }
 
-header h1 {
-  font-size: 22px;
-  margin: 0;
-  color: #333;         /* 标题文字深灰 */
-}
+ /* ========== 导航标题 ========== */
+ .header {
+ text-align: center;
+ padding: 2rem 0;
+ background-color: #2e8b57; /* 墨绿色主题 */
+ color: #fff;
+ }
 
-.search-bar {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 5px;
-}
+ .header h1 {
+ font-size: 1.8rem;
+ font-weight: 600;
+ letter-spacing: 1px;
+ }
 
-.search-bar input[type="text"] {
-  padding: 6px 10px;
-  border-radius: 6px;
-  border: 1px solid #ddd; /* 输入框浅灰边框 */
-  background: #fff;       /* 输入框纯白背景 */
-  color: #666;            /* 输入框文字深灰（比#333更柔和） */
-}
+ /* ========== 分类列表 ========== */
+ .categories {
+ list-style: none;
+ padding: 1rem;
+ }
 
-.search-bar input[type="submit"] {
-  padding: 6px 12px;
-  border: none;
-  border-radius: 6px;
-  background: #ff3b3f;    /* 按钮保留原图红色，强化辨识度 */
-  color: #fff;            /* 按钮文字纯白 */
-  cursor: pointer;
-  transition: background 0.2s;
-}
+ .category {
+ margin-bottom: 2rem; /* 分类间距加大 */
+ }
 
-.search-bar input[type="submit"]:hover {
-  background: #e6393c;    /* 按钮 hover 加深红色 */
-}
+ .category h2 {
+ font-size: 1.25rem;
+ font-weight: 700;
+ margin-bottom: 1rem;
+ position: relative; /* 用于下划线和竖线定位 */
+ color: #2e8b57; /* 分类标题文字色 */
+ padding-left: 1rem; /* 左侧留空给竖线 */
+ }
 
-/* ---------- 侧边栏 ---------- */
-.sidebar {
-  position: fixed;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 220px;
-  background: #fff;       /* 侧边栏纯白背景 */
-  color: #333;            /* 侧边栏文字深灰 */
-  padding: 20px 0;
-  overflow-y: auto;       /* 内容过多时滚动 */
-}
+ /* 分类标题左侧竖线 */
+ .category h2::before {
+ content: "";
+ position: absolute;
+ left: 0;
+ top: 50%;
+ transform: translateY(-50%);
+ width: 3px;
+ height: 1.2em;
+ background-color: #2e8b57; /* 墨绿色竖线 */
+ }
 
-.sidebar a {
-  display: block;
-  padding: 8px 20px;
-  color: #333;            /* 链接文字深灰 */
-  text-decoration: none;
-  transition: background 0.2s;
-}
+ /* 分类标题底部下划线 */
+ .category h2::after {
+ content: "";
+ position: absolute;
+ left: 0;
+ bottom: -8px;
+ width: 100%;
+ height: 1px;
+ background-color: rgba(46, 139, 87, 0.8); /* 半透明墨绿色下划线 */
+ }
 
-.sidebar a:hover {
-  background: #f5f5f5;    /* 链接 hover 浅灰背景（与页面背景呼应） */
-}
+ /* ========== 卡片容器 ========== */
+ .cards {
+ display: grid;
+ grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+ gap: 1rem; /* 卡片间距 */
+ padding: 0 1rem;
+ }
 
-/* ---------- 主内容网格 ---------- */
-main {
-  padding: 20px 20px 20px 220px; /* 左侧留出侧边栏宽度 */
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 20px;
-}
+ /* 单个卡片 */
+ .card {
+ background-color: #fff;
+ padding: 1rem;
+ border-radius: 8px;
+ box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+ transition: all 0.2s ease;
+ display: flex;
+ align-items: center;
+ cursor: pointer;
+ }
 
-/* ---------- 卡片样式 ---------- */
-.card {
-  background: #fff;                   /* 卡片纯白背景 */
-  border-radius: 14px;
-  padding: 14px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); /* 浅阴影，增强立体感但不突兀 */
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-weight: 500;
-  color: #333; /* 卡片文字深灰 */
-  text-decoration: none;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
+ .card:hover {
+ transform: translateY(-2px);
+ box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+ }
 
-.card img {
-  width: 24px;
-  height: 24px;
-}
+ /* 卡片图标 */
+ .card img {
+ width: 24px;
+ height: 24px;
+ margin-right: 0.75rem;
+ object-fit: contain;
+ }
 
-.card:hover {
-  transform: translateY(-6px) scale(1.02);
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1); /* hover 阴影加深，强化交互 */
-}
+ /* 卡片文字 */
+ .card span {
+ font-size: 1rem;
+ color: #495057; /* 深灰文字，提升可读性 */
+ }
+ </style>
+</head>
+<body>
 
-/* ---------- 分类标题 ---------- */
-.category-title {
-  grid-column: 1 / -1;
-  font-size: 20px;
-  font-weight: 600;
-  color: #333; /* 标题文字深灰 */
-  margin-top: 30px;
-  margin-bottom: 10px;
-  border-left: 6px solid #ff3b3f; /* 保留原图红色左侧边框，强化板块区分 */
-  padding-left: 10px;
-  background: #fff; /* 标题背景纯白 */
-}
+ <!-- 导航标题 -->
+ <header class="header">
+ <h1>我的现代彩色导航</h1>
+ </header>
 
-/* ---------- Footer ---------- */
-footer {
-  text-align: center;
-  padding: 20px;
-  background: #f5f5f5; /* 底部浅灰背景（与页面背景统一） */
-  margin-top: 30px;
-  font-size: 14px;
-  color: #666; /* 底部文字浅灰，弱化视觉聚焦内容 */
-}
+ <!-- 分类列表 -->
+ <ul class="categories">
+ <!-- VPS 分类 -->
+ <li class="category">
+ <h2>VPS</h2>
+ <div class="cards">
+ <a href="#" class="card">
+ <img src="https://cdn-icons-png.flaticon.com/512/1077/1077063.png" alt="Cloudflare Dash">
+ <span>Cloudflare Dash</span>
+ </a>
+ <a href="#" class="card">
+ <img src="https://cdn-icons-png.flaticon.com/512/1246/1246060.png" alt="ZGovPS">
+ <span>ZGovPS</span>
+ </a>
+ <a href="#" class="card">
+ <img src="https://cdn-icons-png.flaticon.com/512/1077/1077069.png" alt="Kejilion BBR加速工具">
+ <span>Kejilion BBR加速工具</span>
+ </a>
+ <a href="#" class="card">
+ <img src="https://cdn-icons-png.flaticon.com/512/1077/1077070.png" alt="Colocrossing">
+ <span>Colocrossing</span>
+ </a>
+ <a href="#" class="card">
+ <img src="https://cdn-icons-png.flaticon.com/512/1077/1077071.png" alt="CloudCone">
+ <span>CloudCone</span>
+ </a>
+ </div>
+ </li>
 
-/* ---------- 响应式 ---------- */
-@media (max-width: 600px) {
-  header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .search-bar {
-    width: 100%;
-    gap: 5px;
-  }
-  main {
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-    gap: 15px;
-    padding: 20px; /* 小屏幕取消左侧边栏留白，适配窄屏 */
-  }
-  .sidebar {
-    position: static;
-    width: 100%;
-    padding: 10px;
-  }
-}
+ <!-- 域名分类 -->
+ <li class="category">
+ <h2>域名</h2>
+ <div class="cards">
+ <a href="#" class="card">
+ <img src="https://cdn-icons-png.flaticon.com/512/1077/1077064.png" alt="DigitalPlat Dash">
+ <span>DigitalPlat Dash</span>
+ </a>
+ </div>
+ </li>
+
+ <!-- VPS购买推荐 -->
+ <li class="category">
+ <h2>VPS购买推荐</h2>
+ <div class="cards">
+ <a href="#" class="card">
+ <img src="https://cdn-icons-png.flaticon.com/512/1077/1077065.png" alt="HostMonit Stock">
+ <span>HostMonit Stock</span>
+ </a>
+ </div>
+ </li>
+
+ <!-- AI工具 -->
+ <li class="category">
+ <h2>AI工具</h2>
+ <div class="cards">
+ <a href="#" class="card">
+ <img src="https://cdn-icons-png.flaticon.com/512/1077/1077072.png" alt="ChatGPT">
+ <span>ChatGPT</span>
+ </a>
+ <a href="#" class="card">
+ <img src="https://cdn-icons-png.flaticon.com/512/1077/1077073.png" alt="HuggingFace">
+ <span>HuggingFace</span>
+ </a>
+ </div>
+ </li>
+
+ <!-- 社区分类 -->
+ <li class="category">
+ <h2>社区</h2>
+ <div class="cards">
+ <a href="#" class="card">
+ <img src="https://cdn-icons-png.flaticon.com/512/1077/1077074.png" alt="Bilibili">
+ <span>Bilibili</span>
+ </a>
+ <a href="#" class="card">
+ <img src="https://cdn-icons-png.flaticon.com/512/1077/1077075.png" alt="Reddit">
+ <span>Reddit</span>
+ </a>
+ </div>
+ </li>
+
+ <!-- 图像灵感 -->
+ <li class="category">
+ <h2>图像灵感</h2>
+ <div class="cards">
+ <a href="#" class="card">
+ <img src="https://cdn-icons-png.flaticon.com/512/1077/1077076.png" alt="Pinterest">
+ <span>Pinterest</span>
+ </a>
+ </div>
+ </li>
+ </ul>
+
+</body>
+</html>

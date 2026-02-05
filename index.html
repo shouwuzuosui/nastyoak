@@ -1,22 +1,21 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
  <meta charset="UTF-8">
- <title>我的现代彩色导航</title>
+ <title>Nastyoak的导航页</title>
  <link rel="stylesheet" href="style.css">
 </head>
 <body>
  <header>
- <h1>我的现代彩色导航</h1>
+ <h1>Nastyoak的导航页</h1>
  <div class="search-bar">
- <form action="https://www.baidu.com/s" method="get" target="_blank">
+ <form action="https://www.baidu.com/s" method="get" target="_blank" class="search-form">
  <input type="text" name="wd" placeholder="百度搜索...">
- <button type="submit">百度</button>
+ <button type="submit">🔍</button>
  </form>
- <form action="https://www.google.com/search" method="get" target="_blank">
+ <form action="https://www.google.com/search" method="get" target="_blank" class="search-form">
  <input type="text" name="q" placeholder="Google搜索...">
- <button type="submit">Google</button>
+ <button type="submit">🔎</button>
  </form>
  </div>
  </header>
@@ -86,7 +85,18 @@
  </div>
  </section>
 
- <!-- 社区分类 -->
+ <!-- 视频社区 -->
+ <section class="category">
+ <h2>视频</h2>
+ <div class="cards">
+ <a href="https://www.bilibili.com/" class="card" target="_blank">
+ <img src="https://www.google.com/s2/favicons?domain=bilibili.com">
+ Bilibili
+ </a>
+ </div>
+ </section>
+
+ <!-- 社交聚合 -->
  <section class="category">
  <h2>社交内容聚合社区</h2>
  <div class="cards">
@@ -122,25 +132,10 @@
  </a>
  </div>
  </section>
-
- <!-- 娱乐 -->
- <section class="category">
- <h2>娱乐</h2>
- <div class="cards">
- <a href="https://www.youtube.com/" class="card" target="_blank">
- <img src="https://www.google.com/s2/favicons?domain=youtube.com">
- YouTube
- </a>
- <a href="https://www.netflix.com/" class="card" target="_blank">
- <img src="https://www.google.com/s2/favicons?domain=netflix.com">
- Netflix
- </a>
- </div>
- </section>
  </main>
 
  <footer>
- © 我的现代彩色导航页
+ © Nastyoak的导航页
  </footer>
 </body>
 </html>

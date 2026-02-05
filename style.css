@@ -30,4 +30,155 @@ header h1 {
 
 header h1::before {
   content: "📊";
-  f
+  font-size: 22px;
+}
+
+.top-tools {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.top-tools input {
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  background: #fff;
+  font-size: 13px;
+  transition: all 0.2s;
+}
+
+.top-tools input:focus {
+  outline: none;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 2px rgba(99,102,241,0.15);
+}
+
+#ipinfo {
+  font-size: 12px;
+  color: #4b5563;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: #eef2ff;
+}
+
+/* ===== 主体 ===== */
+main {
+  padding: 28px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 22px;
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+/* ===== 卡片 ===== */
+.category {
+  background: linear-gradient(180deg, #ffffff, #fafbff);
+  border-radius: 18px;
+  padding: 16px 18px 18px;
+  box-shadow:
+    0 6px 18px rgba(0,0,0,0.06),
+    inset 0 1px 0 rgba(255,255,255,0.6);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.category:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 12px 28px rgba(0,0,0,0.08),
+    inset 0 1px 0 rgba(255,255,255,0.6);
+}
+
+/* 彩色条 */
+.category::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 4px;
+  width: 100%;
+  background: linear-gradient(90deg, #6366f1, #22d3ee);
+}
+
+/* 标题 */
+.category h2 {
+  margin: 4px 0 12px;
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #111827;
+}
+
+/* ===== 链接 ===== */
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.links a {
+  display: flex;
+  align-items: center;
+  padding: 8px 10px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: #374151;
+  background: rgba(243,244,246,0.5);
+  transition: all 0.15s;
+  font-size: 13px;
+}
+
+.links a::before {
+  content: "🔗";
+  margin-right: 6px;
+}
+
+.links a:hover {
+  background: #eef2ff;
+  color: #1d4ed8;
+  transform: translateX(3px);
+}
+
+/* ===== 常用区高亮 ===== */
+.favorite {
+  border: 2px solid #facc15;
+}
+
+.favorite::before {
+  background: linear-gradient(90deg, #facc15, #fb923c);
+}
+
+/* ===== 命令区 ===== */
+pre {
+  background: #0f172a;
+  color: #e5e7eb;
+  padding: 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  line-height: 1.4;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05);
+  overflow-x: auto;
+}
+
+/* ===== 测速结果 ===== */
+#speedResult {
+  margin-top: 10px;
+  font-size: 12px;
+  padding: 6px 8px;
+  border-radius: 8px;
+  background: #ecfeff;
+  color: #0369a1;
+}
+
+/* ===== 底部 ===== */
+footer {
+  text-align: center;
+  padding: 14px;
+  font-size: 12px;
+  color: #6b7280;
+}

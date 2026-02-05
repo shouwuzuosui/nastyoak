@@ -1,212 +1,96 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8" />
-  <title>我的导航页</title>
-  <link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8">
+<title>我的现代导航页</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- 左侧导航栏 -->
-  <div class="sidebar">
-    <h3>导航</h3>
-    <a href="#vps">VPS</a>
-    <a href="#domain">域名</a>
-    <a href="#vpsbuy">VPS推荐</a>
-    <a href="#ai">AI</a>
-    <a href="#video">视频社区</a>
-    <a href="#social">社交社区</a>
-    <a href="#image">灵感图片</a>
-    <a href="#test">测速/测试</a>
-    <a href="#tools">工具</a>
-    <a href="#fun">娱乐</a>
+<header>
+  <h1>我的现代导航</h1>
+  <div class="search-bar">
+    <form action="https://www.baidu.com/s" method="get" target="_blank">
+      <input type="text" name="wd" placeholder="百度搜索...">
+      <input type="submit" value="百度">
+    </form>
+    <form action="https://www.google.com/search" method="get" target="_blank">
+      <input type="text" name="q" placeholder="Google搜索...">
+      <input type="submit" value="Google">
+    </form>
   </div>
+</header>
 
-  <!-- 头部 -->
-  <header>
-    <h1>我的导航</h1>
-    <div class="search-bar">
-      <span id="datetime"></span>
-      <!-- 百度搜索 -->
-      <form action="https://www.baidu.com/s" method="get" target="_blank">
-        <input type="text" name="wd" placeholder="百度搜索...">
-        <input type="submit" value="百度">
-      </form>
-      <!-- Google搜索 -->
-      <form action="https://www.google.com/search" method="get" target="_blank">
-        <input type="text" name="q" placeholder="Google搜索...">
-        <input type="submit" value="Google">
-      </form>
-    </div>
-  </header>
+<main>
+  <!-- VPS -->
+  <div class="category-title">VPS</div>
+  <a href="https://dash.cloudflare.com/" class="card" target="_blank">
+    <img src="https://www.google.com/s2/favicons?domain=cloudflare.com">
+    Cloudflare Dash
+  </a>
+  <a href="https://clients.zgovps.com/" class="card" target="_blank">
+    <img src="https://www.google.com/s2/favicons?domain=zgovps.com">
+    ZGovPS
+  </a>
 
-  <main>
-    <!-- VPS -->
-    <section class="category" id="vps">
-      <h2>VPS</h2>
-      <div class="links">
-        <a href="https://dash.cloudflare.com/" target="_blank">
-          <img src="https://www.google.com/s2/favicons?domain=cloudflare.com">
-          Cloudflare Dash
-        </a>
-        <a href="https://clients.zgovps.com/" target="_blank">
-          <img src="https://www.google.com/s2/favicons?domain=zgovps.com">
-          ZGovPS
-        </a>
-        <a href="https://kejilion.sh/index-zh-CN.html" target="_blank">
-          <img src="https://www.google.com/s2/favicons?domain=kejilion.sh">
-          Kejilion BBR加速工具
-        </a>
-        <a href="https://www.colocrossing.com/" target="_blank">
-          <img src="https://www.google.com/s2/favicons?domain=colocrossing.com">
-          Colocrossing
-        </a>
-        <a href="https://cloudcone.com/" target="_blank">
-          <img src="https://www.google.com/s2/favicons?domain=cloudcone.com">
-          CloudCone
-        </a>
-      </div>
-    </section>
+  <!-- 域名 -->
+  <div class="category-title">域名</div>
+  <a href="https://dash.domain.digitalplat.org/" class="card" target="_blank">
+    <img src="https://www.google.com/s2/favicons?domain=digitalplat.org">
+    DigitalPlat Dash
+  </a>
 
-    <!-- 域名 -->
-    <section class="category" id="domain">
-      <h2>域名</h2>
-      <div class="links">
-        <a href="https://dash.domain.digitalplat.org/" target="_blank">
-          <img src="https://www.google.com/s2/favicons?domain=digitalplat.org">
-          DigitalPlat Dash
-        </a>
-      </div>
-    </section>
+  <!-- AI -->
+  <div class="category-title">AI</div>
+  <a href="https://chat.openai.com" class="card" target="_blank">
+    <img src="https://www.google.com/s2/favicons?domain=openai.com">
+    ChatGPT
+  </a>
+  <a href="https://huggingface.co" class="card" target="_blank">
+    <img src="https://www.google.com/s2/favicons?domain=huggingface.co">
+    HuggingFace
+  </a>
 
-    <!-- VPS购买推荐 -->
-    <section class="category" id="vpsbuy">
-      <h2>VPS购买推荐</h2>
-      <div class="links">
-        <a href="https://stock.hostmonit.com/" target="_blank">
-          <img src="https://www.google.com/s2/favicons?domain=hostmonit.com">
-          HostMonit Stock
-        </a>
-      </div>
-    </section>
+  <!-- 视频社区 -->
+  <div class="category-title">视频 / 内容分享社区</div>
+  <a href="https://www.bilibili.com/" class="card" target="_blank">
+    <img src="https://www.google.com/s2/favicons?domain=bilibili.com">
+    Bilibili
+  </a>
 
-    <!-- AI -->
-    <section class="category" id="ai">
-      <h2>AI</h2>
-      <div class="links">
-        <a href="https://chat.openai.com" target="_blank">
-          <img src="https://www.google.com/s2/favicons?domain=openai.com">
-          ChatGPT
-        </a>
-        <a href="https://huggingface.co" target="_blank">
-          <img src="https://www.google.com/s2/favicons?domain=huggingface.co">
-          HuggingFace
-        </a>
-      </div>
-    </section>
+  <!-- 社交社区 -->
+  <div class="category-title">社交内容聚合社区</div>
+  <a href="https://www.reddit.com/" class="card" target="_blank">
+    <img src="https://www.google.com/s2/favicons?domain=reddit.com">
+    Reddit
+  </a>
 
-    <!-- 视频/内容分享社区 -->
-    <section class="category" id="video">
-      <h2>视频 / 内容分享社区</h2>
-      <div class="links">
-        <a href="https://www.bilibili.com/" target="_blank">
-          <img src="https://www.google.com/s2/favicons?domain=bilibili.com">
-          Bilibili
-        </a>
-      </div>
-    </section>
+  <!-- 工具 -->
+  <div class="category-title">工具 / 技术测试</div>
+  <a href="https://test.ustc.edu.cn/" class="card" target="_blank">
+    <img src="https://www.google.com/s2/favicons?domain=ustc.edu.cn">
+    中科大测速
+  </a>
+  <a href="https://test-ipv6.com/index.html.zh_CN" class="card" target="_blank">
+    <img src="https://www.google.com/s2/favicons?domain=test-ipv6.com">
+    IPv6 测试
+  </a>
 
-    <!-- 社交内容聚合社区 -->
-    <section class="category" id="social">
-      <h2>社交内容聚合社区</h2>
-      <div class="links">
-        <a href="https://www.reddit.com/" target="_blank">
-          <img src="https://www.google.com/s2/favicons?domain=reddit.com">
-          Reddit
-        </a>
-      </div>
-    </section>
+  <!-- 娱乐 -->
+  <div class="category-title">娱乐</div>
+  <a href="https://www.youtube.com/" class="card" target="_blank">
+    <img src="https://www.google.com/s2/favicons?domain=youtube.com">
+    YouTube
+  </a>
+  <a href="https://www.netflix.com/" class="card" target="_blank">
+    <img src="https://www.google.com/s2/favicons?domain=netflix.com">
+    Netflix
+  </a>
+</main>
 
-    <!-- 图像发现与灵感平台 -->
-    <section class="category" id="image">
-      <h2>图像发现与灵感平台</h2>
-      <div class="links">
-        <a href="https://www.pinterest.com/" target="_blank">
-          <img src="https://www.google.com/s2/favicons?domain=pinterest.com">
-          Pinterest
-        </a>
-      </div>
-    </section>
-
-    <!-- 工具/技术测试 -->
-    <section class="category" id="test">
-      <h2>工具 / 技术测试</h2>
-      <div class="links">
-        <a href="https://test.ustc.edu.cn/" target="_blank">
-          <img src="https://www.google.com/s2/favicons?domain=ustc.edu.cn">
-          中科大测速
-        </a>
-        <a href="https://test-ipv6.com/index.html.zh_CN" target="_blank">
-          <img src="https://www.google.com/s2/favicons?domain=test-ipv6.com">
-          IPv6 测试
-        </a>
-      </div>
-    </section>
-
-    <!-- 工具 -->
-    <section class="category" id="tools">
-      <h2>工具</h2>
-      <div class="links">
-        <a href="https://vercel.com" target="_blank">
-          <img src="https://www.google.com/s2/favicons?domain=vercel.com">
-          Vercel
-        </a>
-        <a href="https://notion.so" target="_blank">
-          <img src="https://www.google.com/s2/favicons?domain=notion.so">
-          Notion
-        </a>
-      </div>
-    </section>
-
-    <!-- 娱乐 -->
-    <section class="category" id="fun">
-      <h2>娱乐</h2>
-      <div class="links">
-        <a href="https://www.youtube.com/" target="_blank">
-          <img src="https://www.google.com/s2/favicons?domain=youtube.com">
-          YouTube
-        </a>
-        <a href="https://www.netflix.com/" target="_blank">
-          <img src="https://www.google.com/s2/favicons?domain=netflix.com">
-          Netflix
-        </a>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <span>© 我的个人导航页</span>
-  </footer>
-
-  <!-- 时间脚本 -->
-  <script>
-    function updateDateTime() {
-      const now = new Date();
-      const year = now.getFullYear();
-      const month = now.getMonth() + 1;
-      const day = now.getDate();
-      const hours = String(now.getHours()).padStart(2, '0');
-      const minutes = String(now.getMinutes()).padStart(2, '0');
-      const seconds = String(now.getSeconds()).padStart(2, '0');
-      const weekdays = ['星期日','星期一','星期二','星期三','星期四','星期五','星期六'];
-      const weekday = weekdays[now.getDay()];
-      const datetimeStr = `${year}年${month}月${day}日 ${hours}:${minutes}:${seconds} ${weekday}`;
-      document.getElementById('datetime').textContent = datetimeStr;
-    }
-
-    setInterval(updateDateTime, 1000);
-    updateDateTime();
-  </script>
+<footer>
+  © 我的现代导航页
+</footer>
 
 </body>
 </html>

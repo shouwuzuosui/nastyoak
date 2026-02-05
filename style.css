@@ -1,184 +1,114 @@
-* {
-  box-sizing: border-box;
-}
-
+/* 全局样式 */
 body {
-  margin: 0;
-  font-family: "Segoe UI", system-ui, sans-serif;
-  background: radial-gradient(circle at top, #f4f7ff, #eef2ff);
-  color: #1f2937;
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
+  margin-left: 180px; /* 给左侧栏留空间 */
 }
 
-/* ===== 顶部 ===== */
-header {
-  padding: 14px 24px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: linear-gradient(90deg, #ffffff, #f7f9ff);
-  border-bottom: 1px solid #e5e7eb;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+h1, h2 {
+  margin: 0 0 10px 0;
 }
 
-header h1 {
-  margin: 0;
-  font-size: 22px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
-header h1::before {
-  content: "📊";
-  font-size: 22px;
-}
-
-.top-tools {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-}
-
-.top-tools input {
-  padding: 6px 10px;
-  border-radius: 8px;
-  border: 1px solid #d1d5db;
-  background: #fff;
-  font-size: 13px;
-  transition: all 0.2s;
-}
-
-.top-tools input:focus {
-  outline: none;
-  border-color: #6366f1;
-  box-shadow: 0 0 0 2px rgba(99,102,241,0.15);
-}
-
-#ipinfo {
-  font-size: 12px;
-  color: #4b5563;
-  padding: 4px 8px;
-  border-radius: 999px;
-  background: #eef2ff;
-}
-
-/* ===== 主体 ===== */
-main {
-  padding: 28px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 22px;
-  max-width: 1500px;
-  margin: 0 auto;
-}
-
-/* ===== 卡片 ===== */
-.category {
-  background: linear-gradient(180deg, #ffffff, #fafbff);
-  border-radius: 18px;
-  padding: 16px 18px 18px;
-  box-shadow:
-    0 6px 18px rgba(0,0,0,0.06),
-    inset 0 1px 0 rgba(255,255,255,0.6);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.category:hover {
-  transform: translateY(-3px);
-  box-shadow:
-    0 12px 28px rgba(0,0,0,0.08),
-    inset 0 1px 0 rgba(255,255,255,0.6);
-}
-
-/* 彩色条 */
-.category::before {
-  content: "";
-  position: absolute;
-  top: 0;
+/* 左侧导航栏 */
+.sidebar {
+  position: fixed;
   left: 0;
-  height: 4px;
-  width: 100%;
-  background: linear-gradient(90deg, #6366f1, #22d3ee);
+  top: 0;
+  width: 160px;
+  height: 100%;
+  background: #1e1e1e;
+  padding: 15px 10px;
+  box-sizing: border-box;
+  overflow-y: auto;
 }
 
-/* 标题 */
-.category h2 {
-  margin: 4px 0 12px;
-  font-size: 14px;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  color: #111827;
+.sidebar h3 {
+  color: #fff;
+  text-align: center;
+  margin-bottom: 15px;
 }
 
-/* ===== 链接 ===== */
-.links {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
+.sidebar a {
+  display: block;
+  color: #ddd;
+  padding: 8px;
+  margin: 5px 0;
+  border-radius: 6px;
+  transition: 0.2s;
+}
+
+.sidebar a:hover {
+  background: #4caf50;
+  color: #fff;
+}
+
+/* 头部 */
+header {
+  background: #fff;
+  padding: 15px 20px;
+  border-bottom: 1px solid #ddd;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.search-bar {
+  margin-top: 10px;
+}
+
+.search-bar form {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+input[type="text"] {
+  padding: 5px;
+}
+
+input[type="submit"] {
+  padding: 5px 10px;
+}
+
+/* 主内容 */
+main {
+  padding: 20px;
+}
+
+.category {
+  margin-bottom: 40px;
 }
 
 .links a {
   display: flex;
   align-items: center;
-  padding: 8px 10px;
-  border-radius: 10px;
-  text-decoration: none;
-  color: #374151;
-  background: rgba(243,244,246,0.5);
-  transition: all 0.15s;
-  font-size: 13px;
-}
-
-.links a::before {
-  content: "🔗";
-  margin-right: 6px;
+  margin: 5px 0;
+  padding: 5px 10px;
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  transition: 0.2s;
 }
 
 .links a:hover {
-  background: #eef2ff;
-  color: #1d4ed8;
-  transform: translateX(3px);
+  background: #e0f7fa;
 }
 
-/* ===== 常用区高亮 ===== */
-.favorite {
-  border: 2px solid #facc15;
+.links img {
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
 }
 
-.favorite::before {
-  background: linear-gradient(90deg, #facc15, #fb923c);
-}
-
-/* ===== 命令区 ===== */
-pre {
-  background: #0f172a;
-  color: #e5e7eb;
-  padding: 12px;
-  border-radius: 12px;
-  font-size: 12px;
-  line-height: 1.4;
-  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05);
-  overflow-x: auto;
-}
-
-/* ===== 测速结果 ===== */
-#speedResult {
-  margin-top: 10px;
-  font-size: 12px;
-  padding: 6px 8px;
-  border-radius: 8px;
-  background: #ecfeff;
-  color: #0369a1;
-}
-
-/* ===== 底部 ===== */
+/* Footer */
 footer {
   text-align: center;
-  padding: 14px;
-  font-size: 12px;
-  color: #6b7280;
+  padding: 15px;
+  border-top: 1px solid #ddd;
+  background: #fff;
+  margin-top: 20px;
 }

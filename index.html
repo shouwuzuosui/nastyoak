@@ -4,15 +4,24 @@
   <meta charset="UTF-8" />
   <title>我的导航页</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    /* 内嵌时间样式 */
+    #datetime {
+      margin-top: 8px;
+      font-size: 14px;
+      color: #666;
+    }
+  </style>
 </head>
 <body>
 
 <header>
   <h1>我的导航</h1>
+  <div id="datetime"></div> <!-- 时间显示区域 -->
 </header>
 
 <main>
-  <!-- 分类 1 -->
+  <!-- 分类 1：工作 -->
   <section class="category">
     <h2>工作</h2>
     <div class="links">
@@ -24,10 +33,38 @@
         <img src="https://www.google.com/s2/favicons?domain=github.com">
         GitHub
       </a>
+      <a href="https://dash.cloudflare.com/" target="_blank">
+        <img src="https://www.google.com/s2/favicons?domain=cloudflare.com">
+        Cloudflare Dash
+      </a>
+      <a href="https://dash.domain.digitalplat.org/" target="_blank">
+        <img src="https://www.google.com/s2/favicons?domain=digitalplat.org">
+        DigitalPlat Dash
+      </a>
+      <a href="https://clients.zgovps.com/" target="_blank">
+        <img src="https://www.google.com/s2/favicons?domain=zgovps.com">
+        ZGovPS
+      </a>
+      <a href="https://kejilion.sh/index-zh-CN.html" target="_blank">
+        <img src="https://www.google.com/s2/favicons?domain=kejilion.sh">
+        Kejilion
+      </a>
+      <a href="https://stock.hostmonit.com/" target="_blank">
+        <img src="https://www.google.com/s2/favicons?domain=hostmonit.com">
+        HostMonit Stock
+      </a>
+      <a href="https://www.colocrossing.com/" target="_blank">
+        <img src="https://www.google.com/s2/favicons?domain=colocrossing.com">
+        Colocrossing
+      </a>
+      <a href="https://cloudcone.com/" target="_blank">
+        <img src="https://www.google.com/s2/favicons?domain=cloudcone.com">
+        CloudCone
+      </a>
     </div>
   </section>
 
-  <!-- 分类 2 -->
+  <!-- 分类 2：AI -->
   <section class="category">
     <h2>AI</h2>
     <div class="links">
@@ -42,7 +79,7 @@
     </div>
   </section>
 
-  <!-- 分类 3 -->
+  <!-- 分类 3：工具 -->
   <section class="category">
     <h2>工具</h2>
     <div class="links">
@@ -56,11 +93,48 @@
       </a>
     </div>
   </section>
+
+  <!-- 分类 4：娱乐 -->
+  <section class="category">
+    <h2>娱乐</h2>
+    <div class="links">
+      <a href="https://www.youtube.com/" target="_blank">
+        <img src="https://www.google.com/s2/favicons?domain=youtube.com">
+        YouTube
+      </a>
+      <a href="https://www.netflix.com/" target="_blank">
+        <img src="https://www.google.com/s2/favicons?domain=netflix.com">
+        Netflix
+      </a>
+    </div>
+  </section>
 </main>
 
 <footer>
   <span>© 我的个人导航页</span>
 </footer>
+
+<!-- 内嵌脚本显示中文时间 -->
+<script>
+function updateDateTime() {
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = now.getMonth() + 1;
+  const day = now.getDate();
+  const hours = String(now.getHours()).padStart(2, '0');
+  const minutes = String(now.getMinutes()).padStart(2, '0');
+  const seconds = String(now.getSeconds()).padStart(2, '0');
+
+  const weekdays = ['星期日','星期一','星期二','星期三','星期四','星期五','星期六'];
+  const weekday = weekdays[now.getDay()];
+
+  const datetimeStr = `${year}年${month}月${day}日 ${hours}:${minutes}:${seconds} ${weekday}`;
+  document.getElementById('datetime').textContent = datetimeStr;
+}
+
+setInterval(updateDateTime, 1000);
+updateDateTime();
+</script>
 
 </body>
 </html>

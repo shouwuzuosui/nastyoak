@@ -8,106 +8,142 @@
 <body>
 
 <header>
-  <h1>📊 我的仪表盘导航</h1>
-
-  <div class="top-tools">
-    <input type="text" id="searchInput" placeholder="🔍 搜索书签...">
-
-    <div id="ipinfo">🌐 IP: 获取中...</div>
-
+  <h1>我的导航</h1>
+  <div class="search-bar">
+    <span id="datetime"></span>
+    <!-- 百度搜索 -->
     <form action="https://www.baidu.com/s" method="get" target="_blank">
-      <input type="text" name="wd" placeholder="百度">
+      <input type="text" name="wd" placeholder="百度搜索...">
+      <input type="submit" value="百度">
     </form>
-
+    <!-- Google搜索 -->
     <form action="https://www.google.com/search" method="get" target="_blank">
-      <input type="text" name="q" placeholder="Google">
+      <input type="text" name="q" placeholder="Google搜索...">
+      <input type="submit" value="Google">
     </form>
   </div>
 </header>
 
 <main>
+  <!-- VPS -->
+  <section class="category">
+    <h2>VPS</h2>
+    <div class="links">
+      <a href="https://dash.cloudflare.com/" target="_blank">
+        <img src="https://www.google.com/s2/favicons?domain=cloudflare.com">
+        Cloudflare Dash
+      </a>
+      <a href="https://clients.zgovps.com/" target="_blank">
+        <img src="https://www.google.com/s2/favicons?domain=zgovps.com">
+        ZGovPS
+      </a>
+      <a href="https://kejilion.sh/index-zh-CN.html" target="_blank">
+        <img src="https://www.google.com/s2/favicons?domain=kejilion.sh">
+        Kejilion BBR加速工具
+      </a>
+      <a href="https://www.colocrossing.com/" target="_blank">
+        <img src="https://www.google.com/s2/favicons?domain=colocrossing.com">
+        Colocrossing
+      </a>
+      <a href="https://cloudcone.com/" target="_blank">
+        <img src="https://www.google.com/s2/favicons?domain=cloudcone.com">
+        CloudCone
+      </a>
+    </div>
+  </section>
 
-<!-- 常用 -->
-<section class="category favorite">
-  <h2>⭐ 常用</h2>
-  <div class="links">
-    <a href="https://dash.cloudflare.com/" target="_blank">Cloudflare</a>
-    <a href="https://stock.hostmonit.com/" target="_blank">HostMonit</a>
-    <a href="https://www.youtube.com/" target="_blank">YouTube</a>
-  </div>
-</section>
+  <!-- 域名 -->
+  <section class="category">
+    <h2>域名</h2>
+    <div class="links">
+      <a href="https://dash.domain.digitalplat.org/" target="_blank">
+        <img src="https://www.google.com/s2/favicons?domain=digitalplat.org">
+        DigitalPlat Dash
+      </a>
+    </div>
+  </section>
 
-<!-- VPS -->
-<section class="category">
-  <h2>🖥 VPS</h2>
-  <div class="links">
-    <a href="https://clients.zgovps.com/" target="_blank">ZGovPS</a>
-    <a href="https://www.colocrossing.com/" target="_blank">Colocrossing</a>
-    <a href="https://cloudcone.com/" target="_blank">CloudCone</a>
-    <a href="https://status.cloudflare.com" target="_blank">📊 Cloudflare 状态</a>
-  </div>
-</section>
+  <!-- VPS购买推荐 -->
+  <section class="category">
+    <h2>VPS购买推荐</h2>
+    <div class="links">
+      <a href="https://stock.hostmonit.com/" target="_blank">
+        <img src="https://www.google.com/s2/favicons?domain=hostmonit.com">
+        HostMonit Stock
+      </a>
+    </div>
+  </section>
 
-<!-- 域名 -->
-<section class="category">
-  <h2>🌐 域名</h2>
-  <div class="links">
-    <a href="https://dash.domain.digitalplat.org/" target="_blank">DigitalPlat</a>
-  </div>
-</section>
+  <!-- AI -->
+  <section class="category">
+    <h2>AI</h2>
+    <div class="links">
+      <a href="https://chat.openai.com" target="_blank">
+        <img src="https://www.google.com/s2/favicons?domain=openai.com">
+        ChatGPT
+      </a>
+      <a href="https://huggingface.co" target="_blank">
+        <img src="https://www.google.com/s2/favicons?domain=huggingface.co">
+        HuggingFace
+      </a>
+    </div>
+  </section>
 
-<!-- 命令 -->
-<section class="category">
-  <h2>📋 常用命令</h2>
-  <pre>
-apt update && apt upgrade -y
-curl -fsSL https://get.docker.com | sh
-bash <(curl -fsSL https://git.io/bbr.sh)
-  </pre>
-</section>
+  <!-- 工具 -->
+  <section class="category">
+    <h2>工具</h2>
+    <div class="links">
+      <a href="https://vercel.com" target="_blank">
+        <img src="https://www.google.com/s2/favicons?domain=vercel.com">
+        Vercel
+      </a>
+      <a href="https://notion.so" target="_blank">
+        <img src="https://www.google.com/s2/favicons?domain=notion.so">
+        Notion
+      </a>
+    </div>
+  </section>
 
-<!-- 测速 -->
-<section class="category">
-  <h2>⚡ 访问速度测试</h2>
-  <div class="links">
-    <a href="#" onclick="testSpeed('https://www.google.com')">Google 测速</a>
-    <a href="#" onclick="testSpeed('https://dash.cloudflare.com')">Cloudflare 测速</a>
-  </div>
-  <div id="speedResult"></div>
-</section>
-
+  <!-- 娱乐 -->
+  <section class="category">
+    <h2>娱乐</h2>
+    <div class="links">
+      <a href="https://www.youtube.com/" target="_blank">
+        <img src="https://www.google.com/s2/favicons?domain=youtube.com">
+        YouTube
+      </a>
+      <a href="https://www.netflix.com/" target="_blank">
+        <img src="https://www.google.com/s2/favicons?domain=netflix.com">
+        Netflix
+      </a>
+    </div>
+  </section>
 </main>
 
 <footer>
-  © 我的个人导航页
+  <span>© 我的个人导航页</span>
 </footer>
 
+<!-- 时间脚本 -->
 <script>
-/* 书签搜索 */
-const searchInput = document.getElementById('searchInput');
-searchInput.addEventListener('input', function() {
-  const value = this.value.toLowerCase();
-  document.querySelectorAll('.links a').forEach(link => {
-    link.style.display = link.textContent.toLowerCase().includes(value) ? 'flex' : 'none';
-  });
-});
+function updateDateTime() {
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = now.getMonth() + 1;
+  const day = now.getDate();
+  const hours = String(now.getHours()).padStart(2, '0');
+  const minutes = String(now.getMinutes()).padStart(2, '0');
+  const seconds = String(now.getSeconds()).padStart(2, '0');
 
-/* 获取IP */
-fetch("https://api.ipify.org?format=json")
-  .then(res => res.json())
-  .then(data => {
-    document.getElementById("ipinfo").textContent = "🌐 IP: " + data.ip;
-  });
+  const weekdays = ['星期日','星期一','星期二','星期三','星期四','星期五','星期六'];
+  const weekday = weekdays[now.getDay()];
 
-/* 测速 */
-function testSpeed(url) {
-  const start = performance.now();
-  fetch(url, { mode: 'no-cors' }).then(() => {
-    const end = performance.now();
-    document.getElementById("speedResult").textContent =
-      url + " 响应时间: " + Math.round(end - start) + " ms";
-  });
+  const datetimeStr = `${year}年${month}月${day}日 ${hours}:${minutes}:${seconds} ${weekday}`;
+  document.getElementById('datetime').textContent = datetimeStr;
 }
+
+setInterval(updateDateTime, 1000);
+updateDateTime();
 </script>
 
 </body>

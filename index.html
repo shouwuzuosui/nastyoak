@@ -1,102 +1,41 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nastyoak 🧰</title>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <title>我的导航页</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
-<div class="menu-toggle" onclick="document.querySelector('.sidebar').classList.toggle('open')">
-<i class="fas fa-bars"></i>
-</div>
-
-<aside class="sidebar">
-<div class="logo-area">
-<img src="https://user0634.cn.imgto.link/public/20251231/avatar.avif" class="logo-avatar">
-<div class="logo-text">
-<h2>Nastyoak</h2>
-<p>NuanNuan's Tools</p>
-</div>
-</div>
-
-<nav class="nav-menu" id="navMenu">
-<div class="nav-category-title">发现</div>
-<a href="#section-recommend" class="nav-item active"><i class="fas fa-star"></i> 推荐</a>
-</nav>
-
-<div class="theme-toggle" onclick="toggleTheme()">🌙</div>
-</aside>
-
-<main class="main-content">
-<header class="top-header">
-<div class="header-inner">
-<h1>👋 欢迎访问 Nastyoak</h1>
-<div class="search-box">
-<i class="fas fa-search"></i>
-<input type="text" id="searchInput" placeholder="搜索资源...">
-</div>
-</div>
-<div class="header-clock">
-<div id="clockTime" class="clock-time">00:00:00</div>
-<div id="clockDate" class="clock-date">LOADING</div>
-</div>
+<header>
+  <div class="left">
+    <h1>导航</h1>
+    <span id="clock"></span>
+  </div>
+  <div class="right">
+    <input id="search" placeholder="搜索书签..." />
+    <button id="toggleTheme">🌙</button>
+    <button id="exportData">导出</button>
+    <input type="file" id="importData" hidden />
+    <button id="importBtn">导入</button>
+    <button id="addCategoryBtn">＋分类</button>
+  </div>
 </header>
 
-<div class="content-body" id="contentBody">
+<main id="categories"></main>
 
-<!-- 动态区域 -->
+<!-- 弹窗 -->
+<div id="modal" class="hidden">
+  <div class="modal-content">
+    <h3 id="modalTitle"></h3>
+    <input id="modalName" placeholder="名称" />
+    <input id="modalUrl" placeholder="链接 (仅书签)" />
+    <div class="modal-actions">
+      <button id="saveBtn">保存</button>
+      <button id="cancelBtn">取消</button>
+    </div>
+  </div>
 </div>
 
-<div class="add-panel">
-<input id="newCategory" placeholder="新分类名称">
-<input id="newTitle" placeholder="站点名称">
-<input id="newUrl" placeholder="站点URL">
-<button onclick="addSite()">添加</button>
-</div>
-
-</main>
-
-<script>
-let data = JSON.parse(localStorage.getItem("navData")) || [
- {name:"推荐",items:[]}
-];
-
-function save(){ localStorage.setItem("navData",JSON.stringify(data)); }
-
-function render(){
-const nav=document.getElementById("navMenu");
-const body=document.getElementById("contentBody");
-nav.innerHTML='<div class="nav-category-title">发现</div>';
-body.innerHTML="";
-
-data.forEach((cat,i)=>{
-nav.innerHTML+=`<a href="#sec-${i}" class="nav-item"><i class="fas fa-folder"></i>${cat.name}</a>`;
-
-body.innerHTML+=`
-<div id="sec-${i}">
-<div class="section-header">
-<i class="fas fa-bookmark"></i>
-<h3>${cat.name}</h3>
-</div>
-<div class="grid-cards">
-${cat.items.map((s,si)=>`
-<a href="${s.url}" target="_blank" class="card">
-<div class="card-icon">🔗</div>
-<div class="card-info">
-<h4>${s.title}</h4>
-<p>${s.url}</p>
-</div>
-<span class="del" onclick="del(${i},${si})">✖</span>
-</a>
-`).join("")}
-</div>
-</div>`;
-});
-}
-
-function addSite(){
-let c=document.getElementById("newCategory").value||"默认";
-let t=document.getElementById("newTi
+<script src="script.js"></script>
+</body>
+</html>

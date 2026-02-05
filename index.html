@@ -7,17 +7,32 @@
   <style>
     /* 内嵌时间样式 */
     #datetime {
-      margin-top: 8px;
       font-size: 14px;
       color: #666;
+      margin-right: 20px;
     }
 
-    /* 搜索栏样式 */
+    /* 横向布局 header */
+    header {
+      padding: 16px 24px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #e5e5e5;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 22px;
+    }
+
+    /* 搜索栏横向紧凑 */
     .search-bar {
-      margin-top: 12px;
       display: flex;
       gap: 8px;
       flex-wrap: wrap;
+      align-items: center;
     }
 
     .search-bar form {
@@ -31,10 +46,11 @@
       border-radius: 6px;
       border: 1px solid #ccc;
       font-size: 14px;
+      width: 140px; /* 控制输入框紧凑 */
     }
 
     .search-bar input[type="submit"] {
-      padding: 6px 12px;
+      padding: 6px 10px;
       border-radius: 6px;
       border: none;
       background-color: #4285F4;
@@ -47,22 +63,74 @@
     .search-bar input[type="submit"]:hover {
       background-color: #3367d6;
     }
+
+    /* 主体布局保持原样 */
+    main {
+      padding: 24px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    /* 分类卡片保持原样 */
+    .category {
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 16px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+    }
+
+    .category h2 {
+      margin: 0 0 12px 0;
+      font-size: 16px;
+      color: #333;
+    }
+
+    .links {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .links a {
+      display: flex;
+      align-items: center;
+      padding: 8px 10px;
+      border-radius: 8px;
+      text-decoration: none;
+      color: #222;
+      transition: background 0.2s;
+    }
+
+    .links a:hover {
+      background: #f2f3f5;
+    }
+
+    .links img {
+      width: 16px;
+      height: 16px;
+      margin-right: 8px;
+    }
+
+    footer {
+      padding: 16px;
+      text-align: center;
+      color: #888;
+      font-size: 12px;
+    }
   </style>
 </head>
 <body>
 
 <header>
   <h1>我的导航</h1>
-  <div id="datetime"></div> <!-- 时间显示区域 -->
-
-  <!-- 搜索栏 -->
   <div class="search-bar">
+    <span id="datetime"></span>
     <!-- 百度搜索 -->
     <form action="https://www.baidu.com/s" method="get" target="_blank">
       <input type="text" name="wd" placeholder="百度搜索...">
       <input type="submit" value="百度">
     </form>
-
     <!-- Google搜索 -->
     <form action="https://www.google.com/search" method="get" target="_blank">
       <input type="text" name="q" placeholder="Google搜索...">

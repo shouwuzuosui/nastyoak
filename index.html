@@ -11,6 +11,42 @@
       font-size: 14px;
       color: #666;
     }
+
+    /* 搜索栏样式 */
+    .search-bar {
+      margin-top: 12px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .search-bar form {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .search-bar input[type="text"] {
+      padding: 6px 8px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+
+    .search-bar input[type="submit"] {
+      padding: 6px 12px;
+      border-radius: 6px;
+      border: none;
+      background-color: #4285F4;
+      color: #fff;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background 0.2s;
+    }
+
+    .search-bar input[type="submit"]:hover {
+      background-color: #3367d6;
+    }
   </style>
 </head>
 <body>
@@ -18,6 +54,21 @@
 <header>
   <h1>我的导航</h1>
   <div id="datetime"></div> <!-- 时间显示区域 -->
+
+  <!-- 搜索栏 -->
+  <div class="search-bar">
+    <!-- 百度搜索 -->
+    <form action="https://www.baidu.com/s" method="get" target="_blank">
+      <input type="text" name="wd" placeholder="百度搜索...">
+      <input type="submit" value="百度">
+    </form>
+
+    <!-- Google搜索 -->
+    <form action="https://www.google.com/search" method="get" target="_blank">
+      <input type="text" name="q" placeholder="Google搜索...">
+      <input type="submit" value="Google">
+    </form>
+  </div>
 </header>
 
 <main>

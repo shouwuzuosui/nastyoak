@@ -1,53 +1,102 @@
-.theme-toggle{
-position:absolute;
-bottom:20px;
-left:20px;
-cursor:pointer;
-font-size:22px;
+:root {
+  --bg: #f5f6f8;
+  --card: #ffffff;
+  --text: #222;
+  --border: #ddd;
 }
 
-.add-panel{
-position:fixed;
-bottom:20px;
-left:50%;
-transform:translateX(-50%);
-background:#222;
-padding:10px;
-border-radius:10px;
-display:flex;
-gap:6px;
-z-index:300;
+body.dark {
+  --bg: #111;
+  --card: #1e1e1e;
+  --text: #eee;
+  --border: #333;
 }
 
-.add-panel input{
-padding:6px;
-border-radius:6px;
-border:none;
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background: linear-gradient(135deg, #f0f2ff, #ffffff);
+  color: var(--text);
 }
 
-.add-panel button{
-background:var(--accent);
-border:none;
-padding:6px 12px;
-border-radius:6px;
-cursor:pointer;
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--border);
 }
 
-.card .del{
-position:absolute;
-top:8px;
-right:8px;
-cursor:pointer;
-color:red;
+header input {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
 }
 
-/* 浅色模式 */
-body.light{
---sidebar-bg:#f3f4f6;
---main-bg:#ffffff;
---card-bg:#f9fafb;
---card-hover:#e5e7eb;
---text-main:#111;
---text-sub:#666;
---border:#ddd;
+button {
+  margin-left: 6px;
+  padding: 6px 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+main {
+  padding: 24px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.category {
+  background: var(--card);
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.category h2 {
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+}
+
+.bookmark {
+  display: flex;
+  align-items: center;
+  padding: 6px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.bookmark:hover {
+  background: rgba(0,0,0,0.05);
+}
+
+.bookmark img {
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+}
+
+#modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hidden { display: none; }
+
+.modal-content {
+  background: var(--card);
+  padding: 20px;
+  border-radius: 10px;
+  width: 280px;
+}
+
+.modal-content input {
+  width: 100%;
+  margin: 8px 0;
+  padding: 6px;
 }

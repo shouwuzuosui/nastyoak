@@ -2,28 +2,28 @@
 body {
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: #121212; /* 深色背景替代原浅灰 */
-  color: #e0e0e0;       /* 文字浅灰，增强可读性 */
+  background: #f5f5f5; /* 白色系背景（比纯白更柔和） */
+  color: #333;         /* 文字深灰，提升可读性 */
 }
 
 /* ---------- 顶部导航 ---------- */
 header {
   position: sticky;
   top: 0;
-  background: #1e1e1e; /* 导航栏深色背景 */
+  background: #fff;    /* 导航栏纯白背景 */
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   padding: 12px 20px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); /* 加深阴影，突出层级 */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); /* 浅阴影，弱化存在感 */
   z-index: 100;
 }
 
 header h1 {
   font-size: 22px;
   margin: 0;
-  color: #fff; /* 标题文字白色 */
+  color: #333;         /* 标题文字深灰 */
 }
 
 .search-bar {
@@ -35,23 +35,23 @@ header h1 {
 .search-bar input[type="text"] {
   padding: 6px 10px;
   border-radius: 6px;
-  border: 1px solid #444; /* 输入框深色边框 */
-  background: #2c2c2c;     /* 输入框深色背景 */
-  color: #fff;             /* 输入框文字白色 */
+  border: 1px solid #ddd; /* 输入框浅灰边框 */
+  background: #fff;       /* 输入框纯白背景 */
+  color: #666;            /* 输入框文字深灰（比#333更柔和） */
 }
 
 .search-bar input[type="submit"] {
   padding: 6px 12px;
   border: none;
   border-radius: 6px;
-  background: #4a4a4a; /* 按钮深色背景 */
-  color: #fff;         /* 按钮文字白色 */
+  background: #ff3b3f;    /* 按钮保留原图红色，强化辨识度 */
+  color: #fff;            /* 按钮文字纯白 */
   cursor: pointer;
   transition: background 0.2s;
 }
 
 .search-bar input[type="submit"]:hover {
-  background: #5a5a5a; /* 按钮 hover 加深 */
+  background: #e6393c;    /* 按钮 hover 加深红色 */
 }
 
 /* ---------- 侧边栏 ---------- */
@@ -61,22 +61,22 @@ header h1 {
   top: 0;
   bottom: 0;
   width: 220px;
-  background: #1e1e1e; /* 侧边栏深色背景 */
-  color: #e0e0e0;      /* 侧边栏文字浅灰 */
+  background: #fff;       /* 侧边栏纯白背景 */
+  color: #333;            /* 侧边栏文字深灰 */
   padding: 20px 0;
-  overflow-y: auto;    /* 内容过多时滚动 */
+  overflow-y: auto;       /* 内容过多时滚动 */
 }
 
 .sidebar a {
   display: block;
   padding: 8px 20px;
-  color: #e0e0e0;      /* 链接文字浅灰 */
+  color: #333;            /* 链接文字深灰 */
   text-decoration: none;
   transition: background 0.2s;
 }
 
 .sidebar a:hover {
-  background: #2c2c2c; /* 链接 hover 背景加深 */
+  background: #f5f5f5;    /* 链接 hover 浅灰背景（与页面背景呼应） */
 }
 
 /* ---------- 主内容网格 ---------- */
@@ -89,15 +89,15 @@ main {
 
 /* ---------- 卡片样式 ---------- */
 .card {
-  background: linear-gradient(135deg, #2c2c2c 0%, #222 100%); /* 深色卡片渐变 */
+  background: #fff;                   /* 卡片纯白背景 */
   border-radius: 14px;
   padding: 14px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* 加深阴影，增强立体感 */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); /* 浅阴影，增强立体感但不突兀 */
   display: flex;
   align-items: center;
   gap: 10px;
   font-weight: 500;
-  color: #fff; /* 卡片文字白色 */
+  color: #333; /* 卡片文字深灰 */
   text-decoration: none;
   transition: transform 0.3s, box-shadow 0.3s;
 }
@@ -109,7 +109,7 @@ main {
 
 .card:hover {
   transform: translateY(-6px) scale(1.02);
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.4); /* hover 阴影加深 */
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1); /* hover 阴影加深，强化交互 */
 }
 
 /* ---------- 分类标题 ---------- */
@@ -117,22 +117,22 @@ main {
   grid-column: 1 / -1;
   font-size: 20px;
   font-weight: 600;
-  color: #fff; /* 标题文字白色 */
+  color: #333; /* 标题文字深灰 */
   margin-top: 30px;
   margin-bottom: 10px;
-  border-left: 6px solid #ff3b3f; /* 保留原图红色边框，增强辨识度 */
+  border-left: 6px solid #ff3b3f; /* 保留原图红色左侧边框，强化板块区分 */
   padding-left: 10px;
-  background: #1e1e1e; /* 标题背景深色 */
+  background: #fff; /* 标题背景纯白 */
 }
 
 /* ---------- Footer ---------- */
 footer {
   text-align: center;
   padding: 20px;
-  background: #1e1e1e; /* 底部深色背景 */
+  background: #f5f5f5; /* 底部浅灰背景（与页面背景统一） */
   margin-top: 30px;
   font-size: 14px;
-  color: #aaa; /* 底部文字浅灰，弱化视觉 */
+  color: #666; /* 底部文字浅灰，弱化视觉聚焦内容 */
 }
 
 /* ---------- 响应式 ---------- */
@@ -148,7 +148,7 @@ footer {
   main {
     grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
     gap: 15px;
-    padding: 20px; /* 小屏幕取消左侧边栏留白 */
+    padding: 20px; /* 小屏幕取消左侧边栏留白，适配窄屏 */
   }
   .sidebar {
     position: static;

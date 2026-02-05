@@ -1,202 +1,102 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="暖暖的个人导航页 - 仪表盘版">
-    <title>暖暖の百宝箱 🧰 | 极客资源导航</title> 
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nastyoak 🧰</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="menu-toggle" onclick="document.querySelector('.sidebar').classList.toggle('open')">
-        <i class="fas fa-bars"></i>
-    </div>
+<div class="menu-toggle" onclick="document.querySelector('.sidebar').classList.toggle('open')">
+<i class="fas fa-bars"></i>
+</div>
 
-    <aside class="sidebar">
-        <div class="logo-area">
-            <img src="https://user0634.cn.imgto.link/public/20251231/avatar.avif" alt="Avatar" class="logo-avatar">
-            <div class="logo-text">
-                <h2>暖暖の百宝箱</h2>
-                <p>NuanNuan's Tools</p>
-            </div>
-        </div>
+<aside class="sidebar">
+<div class="logo-area">
+<img src="https://user0634.cn.imgto.link/public/20251231/avatar.avif" class="logo-avatar">
+<div class="logo-text">
+<h2>Nastyoak</h2>
+<p>NuanNuan's Tools</p>
+</div>
+</div>
 
-        <nav class="nav-menu">
-            <div class="nav-category-title">发现</div>
-            <a href="#section-recommend" class="nav-item active"><i class="fas fa-star"></i> 站长推荐</a>
-            <a href="#section-money" class="nav-item"><i class="fas fa-sack-dollar"></i> 恰饭</a>
-        </nav>
-    </aside>
+<nav class="nav-menu" id="navMenu">
+<div class="nav-category-title">发现</div>
+<a href="#section-recommend" class="nav-item active"><i class="fas fa-star"></i> 推荐</a>
+</nav>
 
-    <main class="main-content">
-        
-        <header class="top-header">
-            <div class="header-inner">
-                <h1>👋 欢迎访问 暖暖の百宝箱</h1>
-                <div class="search-box">
-                    <i class="fas fa-search"></i>
-                    <input type="text" id="searchInput" placeholder="搜索你想要的资源...">
-                </div>
-            </div>
-            
-            <div class="header-clock">
-                <div id="clockTime" class="clock-time">00:00:00</div>
-                <div id="clockDate" class="clock-date">LOADING...</div>
-            </div>
-        </header>
+<div class="theme-toggle" onclick="toggleTheme()">🌙</div>
+</aside>
 
-        <div class="content-body">
+<main class="main-content">
+<header class="top-header">
+<div class="header-inner">
+<h1>👋 欢迎访问 Nastyoak</h1>
+<div class="search-box">
+<i class="fas fa-search"></i>
+<input type="text" id="searchInput" placeholder="搜索资源...">
+</div>
+</div>
+<div class="header-clock">
+<div id="clockTime" class="clock-time">00:00:00</div>
+<div id="clockDate" class="clock-date">LOADING</div>
+</div>
+</header>
 
-            <div id="section-recommend">
-                <div class="section-header">
-                    <i class="fas fa-bullhorn"></i>
-                    <h3>关注防失联</h3>
-                    <span class="tag">Contact</span>
-                </div>
-                <div class="grid-cards">
-                    <a href="http://www.nuan1145.eu.cc/" target="_blank" class="card">
-                        <div class="card-icon" style="color: #4e8cff;">🏠</div>
-                        <div class="card-info">
-                            <h4>我的个人博客</h4>
-                            <p>核心大本营！NAS、软件教程都在这，排版超舒适~</p>
-                        </div>
-                    </a>
-                    <a href="https://t.me/NUAN114514" target="_blank" class="card">
-                        <div class="card-icon" style="color: #0088cc;">✈️</div>
-                        <div class="card-info">
-                            <h4>TG 频道</h4>
-                            <p>发布最新教程更新、软件资源，防失联必备！</p>
-                        </div>
-                    </a>
-                    <a href="https://t.me/MSC4652" target="_blank" class="card">
-                        <div class="card-icon" style="color: #0088cc;">💬</div>
-                        <div class="card-info">
-                            <h4>TG 摸鱼交流群</h4>
-                            <p>个个都是人才，说话又好听，有问题来群里问~</p>
-                        </div>
-                    </a>
-                </div>
-            </div>
+<div class="content-body" id="contentBody">
 
-            <div id="section-money">
-                <div class="section-header">
-                    <i class="fas fa-utensils"></i>
-                    <h3>恰饭</h3>
-                    <span class="tag">Sponsor</span>
-                </div>
-                <div class="grid-cards">
-                    <a href="https://www.51haoka.cc/index?k=YktYNmtrWTN2R1k9" target="_blank" class="card highlight">
-                        <div class="card-badge">HOT</div>
-                        <div class="card-icon">📶</div>
-                        <div class="card-info">
-                            <h4>宝藏大流量卡</h4>
-                            <p>正规运营商，真实不虚标，月租便宜！</p>
-                        </div>
-                    </a>
-                    <a href="http://www.51haoka.cc/agent/reg.php?code=B4GD669B" target="_blank" class="card highlight">
-                        <div class="card-badge">$$$</div>
-                        <div class="card-icon">🤝</div>
-                        <div class="card-info">
-                            <h4>流量卡代理招募</h4>
-                            <p>顶级佣金，想搞副业的速来上车!</p>
-                        </div>
-                    </a>
-                    <a href="https://goso002.com/?from=24529" target="_blank" class="card">
-                        <div class="card-icon">🍎</div>
-                        <div class="card-info">
-                            <h4>苹果外区购买</h4>
-                            <p>美区/各区独享成品账号，下载软件不求人。</p>
-                        </div>
-                    </a>
-                    <a href="https://mypikpak.com/drive/activity/invited?invitation-code=66396543" target="_blank" class="card">
-                        <div class="card-icon">⚡</div>
-                        <div class="card-info">
-                            <h4>PikPak 网盘</h4>
-                            <p>不限速、离线下载神器！</p>
-                        </div>
-                    </a>
-                    <a href="https://www.123684.com/s/R2hjVv-6Pg13" target="_blank" class="card">
-                        <div class="card-icon">💾</div>
-                        <div class="card-info">
-                            <h4>个人网盘 (NUAN)</h4>
-                            <p>免客户端下载，速度起飞，资源都在这。</p>
-                        </div>
-                    </a>
-                    <a href="https://i.cpolar.com/m/6DaX" target="_blank" class="card">
-                        <div class="card-icon">⚡</div>
-                        <div class="card-info">
-                            <h4>cpolar 内网穿透</h4>
-                            <p>超简单的内网穿透，适合nas部署的docker。</p>
-                        </div>
-                    </a>
-                </div>
-            </div>
+<!-- 动态区域 -->
+</div>
 
-            <div style="text-align: center; color: #555; margin-top: 50px; font-size: 12px;">
-                <p>© 2025 暖暖の百宝箱 🧰 <br> 折腾不止，分享不息 🚀</p>
-            </div>
+<div class="add-panel">
+<input id="newCategory" placeholder="新分类名称">
+<input id="newTitle" placeholder="站点名称">
+<input id="newUrl" placeholder="站点URL">
+<button onclick="addSite()">添加</button>
+</div>
 
-        </div>
-    </main>
+</main>
 
-    <script>
-        // 1. 搜索功能
-        document.getElementById('searchInput').addEventListener('keyup', function(e) {
-            let searchText = e.target.value.toLowerCase();
-            let cards = document.querySelectorAll('.card');
-            let sections = document.querySelectorAll('[id^="section-"]');
+<script>
+let data = JSON.parse(localStorage.getItem("navData")) || [
+ {name:"推荐",items:[]}
+];
 
-            cards.forEach(card => {
-                let title = card.querySelector('h4').innerText.toLowerCase();
-                let desc = card.querySelector('p').innerText.toLowerCase();
-                
-                if(title.includes(searchText) || desc.includes(searchText)) {
-                    card.style.display = "flex";
-                } else {
-                    card.style.display = "none";
-                }
-            });
+function save(){ localStorage.setItem("navData",JSON.stringify(data)); }
 
-            sections.forEach(section => {
-                let allCards = section.querySelectorAll('.card');
-                let hasVisible = false;
-                allCards.forEach(c => {
-                    if(c.style.display !== 'none') hasVisible = true;
-                });
+function render(){
+const nav=document.getElementById("navMenu");
+const body=document.getElementById("contentBody");
+nav.innerHTML='<div class="nav-category-title">发现</div>';
+body.innerHTML="";
 
-                if(!hasVisible) {
-                    section.style.display = 'none';
-                } else {
-                    section.style.display = 'block';
-                }
-            });
-        });
+data.forEach((cat,i)=>{
+nav.innerHTML+=`<a href="#sec-${i}" class="nav-item"><i class="fas fa-folder"></i>${cat.name}</a>`;
 
-        // 2. 实时时钟功能
-        function updateClock() {
-            const now = new Date();
-            
-            // 格式化时间 24小时制 HH:MM:SS
-            const hours = String(now.getHours()).padStart(2, '0');
-            const minutes = String(now.getMinutes()).padStart(2, '0');
-            const seconds = String(now.getSeconds()).padStart(2, '0');
-            
-            // 格式化日期 YYYY-MM-DD 星期X
-            const year = now.getFullYear();
-            const month = String(now.getMonth() + 1).padStart(2, '0');
-            const day = String(now.getDate()).padStart(2, '0');
-            const weekDays = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
-            const week = weekDays[now.getDay()];
+body.innerHTML+=`
+<div id="sec-${i}">
+<div class="section-header">
+<i class="fas fa-bookmark"></i>
+<h3>${cat.name}</h3>
+</div>
+<div class="grid-cards">
+${cat.items.map((s,si)=>`
+<a href="${s.url}" target="_blank" class="card">
+<div class="card-icon">🔗</div>
+<div class="card-info">
+<h4>${s.title}</h4>
+<p>${s.url}</p>
+</div>
+<span class="del" onclick="del(${i},${si})">✖</span>
+</a>
+`).join("")}
+</div>
+</div>`;
+});
+}
 
-            document.getElementById('clockTime').innerText = `${hours}:${minutes}:${seconds}`;
-            document.getElementById('clockDate').innerText = `${year}-${month}-${day} ${week}`;
-        }
-
-        // 立即更新一次，并每秒刷新
-        updateClock();
-        setInterval(updateClock, 1000);
-    </script>
-</body>
-</html>
+function addSite(){
+let c=document.getElementById("newCategory").value||"默认";
+let t=document.getElementById("newTi

@@ -6,36 +6,61 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+
 <header>
-  <div class="left">
-    <h1>导航</h1>
-    <span id="clock"></span>
-  </div>
-  <div class="right">
-    <input id="search" placeholder="搜索书签..." />
-    <button id="toggleTheme">🌙</button>
-    <button id="exportData">导出</button>
-    <input type="file" id="importData" hidden />
-    <button id="importBtn">导入</button>
-    <button id="addCategoryBtn">＋分类</button>
-  </div>
+  <h1>我的导航</h1>
 </header>
 
-<main id="categories"></main>
-
-<!-- 弹窗 -->
-<div id="modal" class="hidden">
-  <div class="modal-content">
-    <h3 id="modalTitle"></h3>
-    <input id="modalName" placeholder="名称" />
-    <input id="modalUrl" placeholder="链接 (仅书签)" />
-    <div class="modal-actions">
-      <button id="saveBtn">保存</button>
-      <button id="cancelBtn">取消</button>
+<main>
+  <!-- 分类 1 -->
+  <section class="category">
+    <h2>工作</h2>
+    <div class="links">
+      <a href="https://www.google.com" target="_blank">
+        <img src="https://www.google.com/s2/favicons?domain=google.com">
+        Google
+      </a>
+      <a href="https://github.com" target="_blank">
+        <img src="https://www.google.com/s2/favicons?domain=github.com">
+        GitHub
+      </a>
     </div>
-  </div>
-</div>
+  </section>
 
-<script src="script.js"></script>
+  <!-- 分类 2 -->
+  <section class="category">
+    <h2>AI</h2>
+    <div class="links">
+      <a href="https://chat.openai.com" target="_blank">
+        <img src="https://www.google.com/s2/favicons?domain=openai.com">
+        ChatGPT
+      </a>
+      <a href="https://huggingface.co" target="_blank">
+        <img src="https://www.google.com/s2/favicons?domain=huggingface.co">
+        HuggingFace
+      </a>
+    </div>
+  </section>
+
+  <!-- 分类 3 -->
+  <section class="category">
+    <h2>工具</h2>
+    <div class="links">
+      <a href="https://vercel.com" target="_blank">
+        <img src="https://www.google.com/s2/favicons?domain=vercel.com">
+        Vercel
+      </a>
+      <a href="https://notion.so" target="_blank">
+        <img src="https://www.google.com/s2/favicons?domain=notion.so">
+        Notion
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <span>© 我的个人导航页</span>
+</footer>
+
 </body>
 </html>

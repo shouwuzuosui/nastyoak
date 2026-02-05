@@ -2,27 +2,28 @@
 body {
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: #f0f0f0;
+  background: #121212; /* 深色背景替代原浅灰 */
+  color: #e0e0e0;       /* 文字浅灰，增强可读性 */
 }
 
 /* ---------- 顶部导航 ---------- */
 header {
   position: sticky;
   top: 0;
-  background: #fff;
+  background: #1e1e1e; /* 导航栏深色背景 */
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   padding: 12px 20px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); /* 加深阴影，突出层级 */
   z-index: 100;
 }
 
 header h1 {
   font-size: 22px;
   margin: 0;
-  color: #333;
+  color: #fff; /* 标题文字白色 */
 }
 
 .search-bar {
@@ -34,26 +35,53 @@ header h1 {
 .search-bar input[type="text"] {
   padding: 6px 10px;
   border-radius: 6px;
-  border: 1px solid #ccc;
+  border: 1px solid #444; /* 输入框深色边框 */
+  background: #2c2c2c;     /* 输入框深色背景 */
+  color: #fff;             /* 输入框文字白色 */
 }
 
 .search-bar input[type="submit"] {
   padding: 6px 12px;
   border: none;
   border-radius: 6px;
-  background: #ff3b3f;
-  color: #fff;
+  background: #4a4a4a; /* 按钮深色背景 */
+  color: #fff;         /* 按钮文字白色 */
   cursor: pointer;
   transition: background 0.2s;
 }
 
 .search-bar input[type="submit"]:hover {
-  background: #e6393c;
+  background: #5a5a5a; /* 按钮 hover 加深 */
+}
+
+/* ---------- 侧边栏 ---------- */
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 220px;
+  background: #1e1e1e; /* 侧边栏深色背景 */
+  color: #e0e0e0;      /* 侧边栏文字浅灰 */
+  padding: 20px 0;
+  overflow-y: auto;    /* 内容过多时滚动 */
+}
+
+.sidebar a {
+  display: block;
+  padding: 8px 20px;
+  color: #e0e0e0;      /* 链接文字浅灰 */
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.sidebar a:hover {
+  background: #2c2c2c; /* 链接 hover 背景加深 */
 }
 
 /* ---------- 主内容网格 ---------- */
 main {
-  padding: 20px;
+  padding: 20px 20px 20px 220px; /* 左侧留出侧边栏宽度 */
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   gap: 20px;
@@ -61,15 +89,15 @@ main {
 
 /* ---------- 卡片样式 ---------- */
 .card {
-  background: linear-gradient(135deg, var(--card-color, #fff) 0%, #fff 100%);
+  background: linear-gradient(135deg, #2c2c2c 0%, #222 100%); /* 深色卡片渐变 */
   border-radius: 14px;
   padding: 14px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* 加深阴影，增强立体感 */
   display: flex;
   align-items: center;
   gap: 10px;
   font-weight: 500;
-  color: #333;
+  color: #fff; /* 卡片文字白色 */
   text-decoration: none;
   transition: transform 0.3s, box-shadow 0.3s;
 }
@@ -81,29 +109,30 @@ main {
 
 .card:hover {
   transform: translateY(-6px) scale(1.02);
-  box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.4); /* hover 阴影加深 */
 }
 
 /* ---------- 分类标题 ---------- */
 .category-title {
-  grid-column: 1/-1;
+  grid-column: 1 / -1;
   font-size: 20px;
   font-weight: 600;
-  color: #222;
+  color: #fff; /* 标题文字白色 */
   margin-top: 30px;
   margin-bottom: 10px;
-  border-left: 6px solid var(--cat-color, #ff3b3f);
+  border-left: 6px solid #ff3b3f; /* 保留原图红色边框，增强辨识度 */
   padding-left: 10px;
+  background: #1e1e1e; /* 标题背景深色 */
 }
 
 /* ---------- Footer ---------- */
 footer {
   text-align: center;
   padding: 20px;
-  background: #fff;
+  background: #1e1e1e; /* 底部深色背景 */
   margin-top: 30px;
   font-size: 14px;
-  color: #555;
+  color: #aaa; /* 底部文字浅灰，弱化视觉 */
 }
 
 /* ---------- 响应式 ---------- */
@@ -119,5 +148,11 @@ footer {
   main {
     grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
     gap: 15px;
+    padding: 20px; /* 小屏幕取消左侧边栏留白 */
+  }
+  .sidebar {
+    position: static;
+    width: 100%;
+    padding: 10px;
   }
 }

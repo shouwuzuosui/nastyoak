@@ -1,102 +1,78 @@
-:root {
-  --bg: #f5f6f8;
-  --card: #ffffff;
-  --text: #222;
-  --border: #ddd;
-}
-
-body.dark {
-  --bg: #111;
-  --card: #1e1e1e;
-  --text: #eee;
-  --border: #333;
+* {
+  box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  font-family: system-ui, sans-serif;
-  background: linear-gradient(135deg, #f0f2ff, #ffffff);
-  color: var(--text);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background: linear-gradient(135deg, #f2f4ff, #ffffff);
+  color: #222;
 }
 
+/* 顶部 */
 header {
-  display: flex;
-  justify-content: space-between;
-  padding: 16px 24px;
-  border-bottom: 1px solid var(--border);
+  padding: 24px;
+  border-bottom: 1px solid #e5e5e5;
 }
 
-header input {
-  padding: 6px 10px;
-  border-radius: 6px;
-  border: 1px solid var(--border);
+header h1 {
+  margin: 0;
+  font-size: 22px;
 }
 
-button {
-  margin-left: 6px;
-  padding: 6px 10px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
+/* 主体布局 */
 main {
   padding: 24px;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 16px;
+  gap: 20px;
 }
 
+/* 分类卡片 */
 .category {
-  background: var(--card);
-  border-radius: 12px;
-  padding: 12px;
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.04);
 }
 
 .category h2 {
-  display: flex;
-  justify-content: space-between;
+  margin: 0 0 12px 0;
   font-size: 16px;
+  color: #333;
 }
 
-.bookmark {
+/* 链接区域 */
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.links a {
   display: flex;
   align-items: center;
-  padding: 6px;
-  border-radius: 6px;
-  cursor: pointer;
+  padding: 8px 10px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #222;
+  transition: background 0.2s;
 }
 
-.bookmark:hover {
-  background: rgba(0,0,0,0.05);
+.links a:hover {
+  background: #f2f3f5;
 }
 
-.bookmark img {
+.links img {
   width: 16px;
   height: 16px;
   margin-right: 8px;
 }
 
-#modal {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,.4);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.hidden { display: none; }
-
-.modal-content {
-  background: var(--card);
-  padding: 20px;
-  border-radius: 10px;
-  width: 280px;
-}
-
-.modal-content input {
-  width: 100%;
-  margin: 8px 0;
-  padding: 6px;
+/* 底部 */
+footer {
+  padding: 16px;
+  text-align: center;
+  color: #888;
+  font-size: 12px;
 }

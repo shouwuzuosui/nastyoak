@@ -48,6 +48,7 @@
             font-size: 1.1rem;
             opacity: 0.9;
             margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
         }
         
         /* 搜索栏样式 */
@@ -272,7 +273,7 @@
     <header>
         <div class="header-container">
             <h1>Nastyoak的导航页</h1>
-            <div class="time-display">当前时间：2026年2月6日 星期五 10:00:00</div>
+            <div class="time-display" id="currentTime">当前时间：<span id="clock"></span></div>
             
             <div class="search-bar">
                 <form action="https://www.baidu.com/s" method="get" target="_blank" class="search-form">
@@ -289,115 +290,94 @@
 
     <main>
         <div class="category-container">
-            <!-- VPS 分类 -->
+            <!-- 技术资源分类 -->
             <section class="category">
-                <h2>VPS</h2>
+                <h2>技术资源</h2>
                 <div class="cards">
-                    <a href="https://dash.cloudflare.com/" class="card" target="_blank">
-                        <img src="https://www.google.com/s2/favicons?domain=cloudflare.com">
-                        <span>Cloudflare Dash</span>
+                    <a href="https://developer.mozilla.org/zh-CN/" class="card" target="_blank" rel="noopener">
+                        <img src="https://www.google.com/s2/favicons?domain=developer.mozilla.org">
+                        <span>MDN Web Docs</span>
                     </a>
-                    <a href="https://clients.zgovps.com/" class="card" target="_blank">
-                        <img src="https://www.google.com/s2/favicons?domain=zgovps.com">
-                        <span>ZGovPS</span>
+                    <a href="https://stackoverflow.com/" class="card" target="_blank" rel="noopener">
+                        <img src="https://www.google.com/s2/favicons?domain=stackoverflow.com">
+                        <span>Stack Overflow</span>
                     </a>
-                    <a href="https://kejilion.sh/index-zh-CN.html" class="card" target="_blank">
-                        <img src="https://www.google.com/s2/favicons?domain=kejilion.sh">
-                        <span>Kejilion BBR加速工具</span>
-                    </a>
-                    <a href="https://www.colocrossing.com/" class="card" target="_blank">
-                        <img src="https://www.google.com/s2/favicons?domain=colocrossing.com">
-                        <span>Colocrossing</span>
-                    </a>
-                    <a href="https://cloudcone.com/" class="card" target="_blank">
-                        <img src="https://www.google.com/s2/favicons?domain=cloudcone.com">
-                        <span>CloudCone</span>
+                    <a href="https://github.com/" class="card" target="_blank" rel="noopener">
+                        <img src="https://www.google.com/s2/favicons?domain=github.com">
+                        <span>GitHub</span>
                     </a>
                 </div>
                 <div class="scroll-hint">← 左右滚动查看更多 →</div>
             </section>
 
-            <!-- 域名分类 -->
+            <!-- 学习提升分类 -->
             <section class="category">
-                <h2>域名</h2>
+                <h2>学习提升</h2>
                 <div class="cards">
-                    <a href="https://dash.domain.digitalplat.org/" class="card" target="_blank">
-                        <img src="https://www.google.com/s2/favicons?domain=digitalplat.org">
-                        <span>DigitalPlat Dash</span>
+                    <a href="https://www.coursera.org/" class="card" target="_blank" rel="noopener">
+                        <img src="https://www.google.com/s2/favicons?domain=coursera.org">
+                        <span>Coursera</span>
+                    </a>
+                    <a href="https://www.youtube.com/" class="card" target="_blank" rel="noopener">
+                        <img src="https://www.google.com/s2/favicons?domain=youtube.com">
+                        <span>YouTube教程</span>
+                    </a>
+                    <a href="https://zhuanlan.zhihu.com/" class="card" target="_blank" rel="noopener">
+                        <img src="https://www.google.com/s2/favicons?domain=zhuanlan.zhihu.com">
+                        <span>知乎专栏</span>
                     </a>
                 </div>
             </section>
 
-            <!-- VPS购买推荐 -->
+            <!-- 生活工具分类 -->
             <section class="category">
-                <h2>VPS购买推荐</h2>
+                <h2>生活工具</h2>
                 <div class="cards">
-                    <a href="https://stock.hostmonit.com/" class="card" target="_blank">
-                        <img src="https://www.google.com/s2/favicons?domain=hostmonit.com">
-                        <span>HostMonit Stock</span>
+                    <a href="https://www.google.com/calendar" class="card" target="_blank" rel="noopener">
+                        <img src="https://www.google.com/s2/favicons?domain=google.com">
+                        <span>Google日历</span>
+                    </a>
+                    <a href="https://www.evernote.com/" class="card" target="_blank" rel="noopener">
+                        <img src="https://www.google.com/s2/favicons?domain=evernote.com">
+                        <span>印象笔记</span>
+                    </a>
+                    <a href="https://www.trello.com/" class="card" target="_blank" rel="noopener">
+                        <img src="https://www.google.com/s2/favicons?domain=trello.com">
+                        <span>Trello看板</span>
                     </a>
                 </div>
             </section>
 
-            <!-- AI工具 -->
+            <!-- 开发者工具分类 -->
             <section class="category">
-                <h2>AI工具</h2>
+                <h2>开发者工具</h2>
                 <div class="cards">
-                    <a href="https://chat.openai.com" class="card" target="_blank">
-                        <img src="https://www.google.com/s2/favicons?domain=openai.com">
-                        <span>ChatGPT</span>
+                    <a href="https://code.visualstudio.com/" class="card" target="_blank" rel="noopener">
+                        <img src="https://www.google.com/s2/favicons?domain=code.visualstudio.com">
+                        <span>VS Code</span>
                     </a>
-                    <a href="https://huggingface.co" class="card" target="_blank">
-                        <img src="https://www.google.com/s2/favicons?domain=huggingface.co">
-                        <span>HuggingFace</span>
+                    <a href="https://www.postman.com/" class="card" target="_blank" rel="noopener">
+                        <img src="https://www.google.com/s2/favicons?domain=postman.com">
+                        <span>Postman</span>
+                    </a>
+                    <a href="https://www.ngrok.com/" class="card" target="_blank" rel="noopener">
+                        <img src="https://www.google.com/s2/favicons?domain=ngrok.com">
+                        <span>Ngrok</span>
                     </a>
                 </div>
             </section>
-
-            <!-- 视频社区 -->
+            
+            <!-- 新增分类示例 -->
             <section class="category">
-                <h2>视频</h2>
+                <h2>新增分类</h2>
                 <div class="cards">
-                    <a href="https://www.bilibili.com/" class="card" target="_blank">
-                        <img src="https://www.google.com/s2/favicons?domain=bilibili.com">
-                        <span>Bilibili</span>
+                    <a href="https://www.google.com" class="card" target="_blank" rel="noopener">
+                        <img src="https://www.google.com/s2/favicons?domain=google.com">
+                        <span>Google</span>
                     </a>
-                </div>
-            </section>
-
-            <!-- 社交聚合 -->
-            <section class="category">
-                <h2>社交内容聚合社区</h2>
-                <div class="cards">
-                    <a href="https://www.reddit.com/" class="card" target="_blank">
-                        <img src="https://www.google.com/s2/favicons?domain=reddit.com">
-                        <span>Reddit</span>
-                    </a>
-                </div>
-            </section>
-
-            <!-- 图像灵感 -->
-            <section class="category">
-                <h2>图像发现与灵感平台</h2>
-                <div class="cards">
-                    <a href="https://www.pinterest.com/" class="card" target="_blank">
-                        <img src="https://www.google.com/s2/favicons?domain=pinterest.com">
-                        <span>Pinterest</span>
-                    </a>
-                </div>
-            </section>
-
-            <!-- 工具/技术测试 -->
-            <section class="category">
-                <h2>工具/技术测试</h2>
-                <div class="cards">
-                    <a href="https://test.ustc.edu.cn/" class="card" target="_blank">
-                        <img src="https://www.google.com/s2/favicons?domain=ustc.edu.cn">
-                        <span>中科大测速</span>
-                    </a>
-                    <a href="https://test-ipv6.com/index.html.zh_CN" class="card" target="_blank">
-                        <img src="https://www.google.com/s2/favicons?domain=test-ipv6.com">
-                        <span>IPv6 测试</span>
+                    <a href="https://www.qq.com" class="card" target="_blank" rel="noopener">
+                        <img src="https://www.google.com/s2/favicons?domain=qq.com">
+                        <span>腾讯</span>
                     </a>
                 </div>
             </section>
@@ -407,5 +387,33 @@
     <footer>
         © 2026 Nastyoak的导航页
     </footer>
+
+    <script>
+        // 获取时间元素
+        const timeElement = document.getElementById('clock');
+        
+        // 星期名称映射
+        const weekDays = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+        
+        function updateTime() {
+            const now = new Date();
+            // 格式化时间组件
+            const year = now.getFullYear();
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const day = String(now.getDate()).padStart(2, '0');
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            const weekDay = weekDays[now.getDay()];
+            
+            // 更新时间显示
+            timeElement.innerHTML = `${year}年${month}月${day}日 ${weekDay} ${hours}:${minutes}:${seconds}`;
+        }
+
+        // 首次加载立即显示时间
+        updateTime();
+        // 每秒更新时间
+        setInterval(updateTime, 1000);
+    </script>
 </body>
 </html>

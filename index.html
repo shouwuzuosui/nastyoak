@@ -298,7 +298,7 @@
             background: white;
         }
         
-        /* 主内容区优化 - 改为横向平铺布局 */
+        /* 主内容区优化 */
         main {
             flex: 1;
             padding: 2.5rem 2rem 3.5rem;
@@ -307,161 +307,152 @@
             width: 100%;
         }
         
-        /* 分类标签导航 */
-        .category-tabs {
+        /* 分类容器改为横向直接展示 */
+        .category-container {
             display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 2rem;
-            background: var(--card-bg);
-            padding: 1rem;
-            border-radius: 12px;
-            box-shadow: var(--card-shadow);
-            position: sticky;
-            top: 0;
-            z-index: 100;
+            flex-direction: column;
+            gap: 2.5rem;
         }
         
-        .category-tab {
-            background: var(--bg-secondary);
-            border: none;
-            padding: 0.6rem 1.2rem;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            font-weight: 500;
-            color: var(--text-color);
-            transition: all 0.3s ease;
+        .category {
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            padding: 1.8rem 1.8rem 1.5rem;
+            box-shadow: var(--card-shadow);
+            transition: all 0.4s ease;
             display: flex;
-            align-items: center;
-            gap: 0.5rem;
+            flex-direction: column;
+            border-left: 5px solid var(--primary-color);
         }
         
-        .category-tab:hover {
-            background: var(--primary-light);
-            color: white;
-        }
-        
-        .category-tab.active {
-            background: var(--primary-color);
-            color: white;
-        }
-        
-        /* 平铺展示区 */
-        .site-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
-        
-        .category-section {
-            display: block;
-            background: var(--card-bg);
-            border-radius: 12px;
-            padding: 1.5rem;
-            box-shadow: var(--card-shadow);
-            border-left: 4px solid var(--primary-color);
-            transition: all 0.3s ease;
-        }
-        
-        .category-section:hover {
-            transform: translateY(-4px);
+        .category:hover {
+            transform: translateY(-6px);
             box-shadow: var(--hover-shadow);
         }
         
-        .category-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1.2rem;
+        .category h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
             padding-bottom: 0.8rem;
             border-bottom: 2px solid var(--border-color);
-        }
-        
-        .category-header h2 {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--primary-color);
             display: flex;
             align-items: center;
-            gap: 0.8rem;
         }
         
-        .category-count {
-            background: var(--primary-light);
-            color: white;
-            font-size: 0.8rem;
-            padding: 0.2rem 0.6rem;
-            border-radius: 10px;
-            font-weight: bold;
+        .category h2 i {
+            margin-right: 0.8rem;
+            font-size: 1.3rem;
         }
         
-        /* 横向排列的站点卡片 */
-        .sites-container {
+        /* 卡片容器 - 改为flex布局，横向展示所有卡片 */
+        .cards {
             display: flex;
             flex-wrap: wrap;
-            gap: 1rem;
+            gap: 1.2rem;
         }
         
-        .site-card {
+        /* 卡片样式优化 */
+        .card {
+            background: linear-gradient(135deg, var(--card-bg) 0%, var(--bg-secondary) 100%);
+            border-radius: 12px;
+            padding: 1.2rem 1.5rem;
             display: flex;
             align-items: center;
-            padding: 0.8rem 1rem;
-            background: linear-gradient(135deg, var(--card-bg) 0%, var(--bg-secondary) 100%);
-            border-radius: 8px;
             text-decoration: none;
             color: var(--text-color);
             border: 1px solid var(--border-color);
             transition: all 0.3s ease;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            flex: 1 0 calc(33.333% - 1rem);
-            min-width: 200px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+            min-width: 220px;
+            flex: 1 1 auto;
         }
         
-        .site-card:hover {
-            transform: translateY(-3px);
-            border-color: var(--primary-color);
-            box-shadow: 0 5px 15px rgba(60, 179, 113, 0.2);
-        }
-        
-        .site-card::before {
+        .card::before {
             content: "";
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 3px;
+            height: 4px;
             background: linear-gradient(90deg, var(--primary-color), var(--primary-light));
             transform: scaleX(0);
             transform-origin: left;
             transition: transform 0.3s ease;
         }
         
-        .site-card:hover::before {
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+            box-shadow: 0 8px 20px rgba(60, 179, 113, 0.25);
+        }
+        
+        .card:hover::before {
             transform: scaleX(1);
         }
         
-        .site-card img {
-            width: 24px;
-            height: 24px;
-            margin-right: 0.8rem;
+        .card img {
+            width: 28px;
+            height: 28px;
+            margin-right: 1rem;
             object-fit: contain;
-            border-radius: 4px;
+            border-radius: 6px;
         }
         
-        .site-card span {
-            font-size: 0.95rem;
+        .card span {
+            font-size: 1rem;
             font-weight: 600;
             color: var(--text-color);
         }
         
-        /* 站点搜索面板 */
+        .card .card-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--primary-light);
+            color: white;
+            font-size: 0.7rem;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+        
+        /* 搜索高亮 */
+        .card.highlight {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(60, 179, 113, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(60, 179, 113, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(60, 179, 113, 0); }
+        }
+        
+        /* 分类信息统计 */
+        .category-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1.2rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        /* 站点搜索面板增强 */
         .site-search-container {
             margin-bottom: 2rem;
+            position: relative;
         }
         
         .site-search {
             max-width: 500px;
             margin: 0 auto;
+            position: relative;
         }
         
         .site-search input {
@@ -486,6 +477,76 @@
             margin-top: 0.5rem;
             color: var(--text-secondary);
             font-size: 0.9rem;
+        }
+        
+        /* 搜索建议下拉框 */
+        .search-suggestions {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: var(--card-bg);
+            border: 2px solid var(--border-color);
+            border-top: none;
+            border-radius: 0 0 20px 20px;
+            max-height: 300px;
+            overflow-y: auto;
+            z-index: 1000;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            display: none;
+        }
+        
+        .search-suggestion-item {
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .search-suggestion-item:last-child {
+            border-bottom: none;
+        }
+        
+        .search-suggestion-item:hover {
+            background-color: var(--primary-light);
+            color: white;
+        }
+        
+        .search-suggestion-item.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .suggestion-icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 1rem;
+            object-fit: contain;
+            border-radius: 4px;
+        }
+        
+        .suggestion-text {
+            flex: 1;
+            font-size: 0.95rem;
+        }
+        
+        .suggestion-category {
+            font-size: 0.8rem;
+            opacity: 0.8;
+            margin-left: 1rem;
+            padding: 0.2rem 0.5rem;
+            background: var(--bg-secondary);
+            border-radius: 4px;
+        }
+        
+        .search-suggestion-item:hover .suggestion-category {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .search-suggestion-item.active .suggestion-category {
+            background: rgba(255, 255, 255, 0.3);
         }
         
         /* 页脚样式增强 */
@@ -530,18 +591,24 @@
         
         /* 响应式设计优化 */
         @media (max-width: 1200px) {
-            .site-grid {
-                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            .card {
+                min-width: 200px;
             }
         }
         
         @media (max-width: 992px) {
-            .site-grid {
-                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            .card {
+                min-width: 180px;
+                padding: 1rem 1.2rem;
             }
             
-            .site-card {
-                flex: 1 0 calc(50% - 1rem);
+            .card img {
+                width: 24px;
+                height: 24px;
+            }
+            
+            .card span {
+                font-size: 0.95rem;
             }
         }
         
@@ -583,27 +650,60 @@
                 padding: 2rem 1.2rem 2.5rem;
             }
             
-            .site-grid {
-                grid-template-columns: 1fr;
+            .category {
+                padding: 1.5rem 1.2rem 1.2rem;
             }
             
-            .site-card {
-                flex: 1 0 100%;
+            .category h2 {
+                font-size: 1.4rem;
             }
             
-            .category-tabs {
-                overflow-x: auto;
-                flex-wrap: nowrap;
-                padding: 0.8rem;
+            .cards {
+                gap: 1rem;
             }
             
-            .category-tab {
-                white-space: nowrap;
+            .card {
+                min-width: 160px;
+                padding: 0.9rem 1rem;
+            }
+            
+            .card img {
+                width: 22px;
+                height: 22px;
+                margin-right: 0.8rem;
+            }
+            
+            .card span {
+                font-size: 0.9rem;
             }
             
             .footer-links {
                 flex-direction: column;
                 gap: 0.8rem;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .cards {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            }
+            
+            .card {
+                min-width: auto;
+            }
+            
+            .search-suggestion-item {
+                padding: 0.8rem 1rem;
+            }
+            
+            .suggestion-text {
+                font-size: 0.9rem;
+            }
+            
+            .suggestion-category {
+                font-size: 0.75rem;
+                margin-left: 0.5rem;
             }
         }
         
@@ -617,17 +717,27 @@
                 padding: 0.6rem 1rem;
             }
             
-            .category-header h2 {
-                font-size: 1.2rem;
+            .category h2 {
+                font-size: 1.3rem;
             }
             
-            .site-card img {
+            .cards {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+                gap: 0.8rem;
+            }
+            
+            .card {
+                padding: 0.8rem 0.9rem;
+            }
+            
+            .card img {
                 width: 20px;
                 height: 20px;
+                margin-right: 0.6rem;
             }
             
-            .site-card span {
-                font-size: 0.9rem;
+            .card span {
+                font-size: 0.85rem;
             }
         }
         
@@ -637,19 +747,48 @@
             to { opacity: 1; transform: translateY(0); }
         }
         
-        .category-section {
+        .category {
             animation: fadeIn 0.6s ease forwards;
         }
         
-        /* 搜索高亮 */
-        .site-card.highlight {
-            animation: pulse 2s infinite;
+        .category:nth-child(2) { animation-delay: 0.1s; }
+        .category:nth-child(3) { animation-delay: 0.2s; }
+        .category:nth-child(4) { animation-delay: 0.3s; }
+        .category:nth-child(5) { animation-delay: 0.4s; }
+        .category:nth-child(6) { animation-delay: 0.5s; }
+        .category:nth-child(7) { animation-delay: 0.6s; }
+        .category:nth-child(8) { animation-delay: 0.7s; }
+        .category:nth-child(9) { animation-delay: 0.8s; }
+        .category:nth-child(10) { animation-delay: 0.9s; }
+        .category:nth-child(11) { animation-delay: 1.0s; }
+        
+        /* 工具提示 */
+        .tooltip {
+            position: relative;
+            display: inline-block;
         }
         
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(60, 179, 113, 0.4); }
-            70% { box-shadow: 0 0 0 10px rgba(60, 179, 113, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(60, 179, 113, 0); }
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 4px;
+            padding: 5px 10px;
+            position: absolute;
+            z-index: 100;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 0.8rem;
+            white-space: nowrap;
+        }
+        
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
         }
     </style>
 </head>
@@ -726,269 +865,288 @@
             <div class="site-search">
                 <input type="text" id="site-search-input" placeholder="搜索本站点 (输入站点名称或关键词)">
                 <div class="search-results" id="search-results">输入关键词搜索站点</div>
+                <div class="search-suggestions" id="search-suggestions"></div>
             </div>
         </div>
         
-        <!-- 分类标签导航 -->
-        <div class="category-tabs" id="category-tabs">
-            <!-- 分类标签将通过JavaScript动态生成 -->
-        </div>
-        
-        <!-- 平铺展示区 -->
-        <div class="site-grid" id="site-grid">
+        <div class="category-container">
             <!-- VPS 分类 -->
-            <section class="category-section" data-category="vps">
-                <div class="category-header">
-                    <h2><i class="fas fa-server"></i> VPS 服务器 <span class="category-count" id="count-vps">6</span></h2>
-                </div>
-                <div class="sites-container">
-                    <a href="https://dash.cloudflare.com/" class="site-card" target="_blank" rel="noopener">
+            <section class="category">
+                <h2><i class="fas fa-server"></i> VPS 服务器</h2>
+                <div class="cards">
+                    <a href="https://dash.cloudflare.com/" class="card" target="_blank" rel="noopener" data-site-name="Cloudflare 面板" data-site-category="VPS 服务器">
                         <img src="https://www.google.com/s2/favicons?domain=cloudflare.com&sz=32">
                         <span>Cloudflare 面板</span>
                     </a>
-                    <a href="https://clients.zgovps.com/" class="site-card" target="_blank" rel="noopener">
+                    <a href="https://clients.zgovps.com/" class="card" target="_blank" rel="noopener" data-site-name="ZGovPS 控制台" data-site-category="VPS 服务器">
                         <img src="https://www.google.com/s2/favicons?domain=zgovps.com&sz=32">
                         <span>ZGovPS 控制台</span>
                     </a>
-                    <a href="https://kejilion.sh/index-zh-CN.html" class="site-card" target="_blank" rel="noopener">
+                    <a href="https://kejilion.sh/index-zh-CN.html" class="card" target="_blank" rel="noopener" data-site-name="科吉里翁 BBR工具" data-site-category="VPS 服务器">
                         <img src="https://www.google.com/s2/favicons?domain=kejilion.sh&sz=32">
                         <span>科吉里翁 BBR工具</span>
                     </a>
-                    <a href="https://www.colocrossing.com/" class="site-card" target="_blank" rel="noopener">
+                    <a href="https://www.colocrossing.com/" class="card" target="_blank" rel="noopener" data-site-name="Colocrossing" data-site-category="VPS 服务器">
                         <img src="https://www.google.com/s2/favicons?domain=colocrossing.com&sz=32">
                         <span>Colocrossing</span>
                     </a>
-                    <a href="https://cloudcone.com/" class="site-card" target="_blank" rel="noopener">
+                    <a href="https://cloudcone.com/" class="card" target="_blank" rel="noopener" data-site-name="CloudCone" data-site-category="VPS 服务器">
                         <img src="https://www.google.com/s2/favicons?domain=cloudcone.com&sz=32">
                         <span>CloudCone</span>
                     </a>
-                    <a href="https://www.vultr.com/" class="site-card" target="_blank" rel="noopener">
+                    <a href="https://www.vultr.com/" class="card" target="_blank" rel="noopener" data-site-name="Vultr" data-site-category="VPS 服务器">
                         <img src="https://www.google.com/s2/favicons?domain=vultr.com&sz=32">
                         <span>Vultr</span>
                     </a>
                 </div>
+                <div class="category-info">
+                    <span>VPS 服务器工具</span>
+                    <span>6 个站点</span>
+                </div>
             </section>
 
             <!-- 域名分类 -->
-            <section class="category-section" data-category="domain">
-                <div class="category-header">
-                    <h2><i class="fas fa-globe"></i> 域名管理 <span class="category-count" id="count-domain">3</span></h2>
-                </div>
-                <div class="sites-container">
-                    <a href="https://dash.domain.digitalplat.org/" class="site-card" target="_blank" rel="noopener">
+            <section class="category">
+                <h2><i class="fas fa-globe"></i> 域名管理</h2>
+                <div class="cards">
+                    <a href="https://dash.domain.digitalplat.org/" class="card" target="_blank" rel="noopener" data-site-name="DigitalPlat 面板" data-site-category="域名管理">
                         <img src="https://www.google.com/s2/favicons?domain=digitalplat.org&sz=32">
                         <span>DigitalPlat 面板</span>
                     </a>
-                    <a href="https://www.namecheap.com/" class="site-card" target="_blank" rel="noopener">
+                    <a href="https://www.namecheap.com/" class="card" target="_blank" rel="noopener" data-site-name="Namecheap" data-site-category="域名管理">
                         <img src="https://www.google.com/s2/favicons?domain=namecheap.com&sz=32">
                         <span>Namecheap</span>
                     </a>
-                    <a href="https://www.godaddy.com/" class="site-card" target="_blank" rel="noopener">
+                    <a href="https://www.godaddy.com/" class="card" target="_blank" rel="noopener" data-site-name="GoDaddy" data-site-category="域名管理">
                         <img src="https://www.google.com/s2/favicons?domain=godaddy.com&sz=32">
                         <span>GoDaddy</span>
                     </a>
                 </div>
+                <div class="category-info">
+                    <span>域名注册与管理</span>
+                    <span>3 个站点</span>
+                </div>
             </section>
 
             <!-- VPS购买推荐 -->
-            <section class="category-section" data-category="vps-recommend">
-                <div class="category-header">
-                    <h2><i class="fas fa-shopping-cart"></i> VPS推荐与监控 <span class="category-count" id="count-vps-recommend">2</span></h2>
-                </div>
-                <div class="sites-container">
-                    <a href="https://stock.hostmonit.com/" class="site-card" target="_blank" rel="noopener">
+            <section class="category">
+                <h2><i class="fas fa-shopping-cart"></i> VPS推荐与监控</h2>
+                <div class="cards">
+                    <a href="https://stock.hostmonit.com/" class="card" target="_blank" rel="noopener" data-site-name="HostMonit 库存监控" data-site-category="VPS推荐与监控">
                         <img src="https://www.google.com/s2/favicons?domain=hostmonit.com&sz=32">
                         <span>HostMonit 库存监控</span>
                     </a>
-                    <a href="https://lowendtalk.com/" class="site-card" target="_blank" rel="noopener">
+                    <a href="https://lowendtalk.com/" class="card" target="_blank" rel="noopener" data-site-name="LowEndTalk 论坛" data-site-category="VPS推荐与监控">
                         <img src="https://www.google.com/s2/favicons?domain=lowendtalk.com&sz=32">
                         <span>LowEndTalk 论坛</span>
                     </a>
                 </div>
+                <div class="category-info">
+                    <span>VPS 推荐与监控工具</span>
+                    <span>2 个站点</span>
+                </div>
             </section>
 
             <!-- AI工具 -->
-            <section class="category-section" data-category="ai">
-                <div class="category-header">
-                    <h2><i class="fas fa-robot"></i> AI 工具与模型 <span class="category-count" id="count-ai">3</span></h2>
-                </div>
-                <div class="sites-container">
-                    <a href="https://chat.openai.com" class="site-card" target="_blank" rel="noopener">
+            <section class="category">
+                <h2><i class="fas fa-robot"></i> AI 工具与模型</h2>
+                <div class="cards">
+                    <a href="https://chat.openai.com" class="card" target="_blank" rel="noopener" data-site-name="ChatGPT" data-site-category="AI 工具与模型">
                         <img src="https://www.google.com/s2/favicons?domain=openai.com&sz=32">
                         <span>ChatGPT</span>
                     </a>
-                    <a href="https://huggingface.co" class="site-card" target="_blank" rel="noopener">
+                    <a href="https://huggingface.co" class="card" target="_blank" rel="noopener" data-site-name="HuggingFace" data-site-category="AI 工具与模型">
                         <img src="https://www.google.com/s2/favicons?domain=huggingface.co&sz=32">
                         <span>HuggingFace</span>
                     </a>
-                    <a href="https://claude.ai" class="site-card" target="_blank" rel="noopener">
+                    <a href="https://claude.ai" class="card" target="_blank" rel="noopener" data-site-name="Claude AI" data-site-category="AI 工具与模型">
                         <img src="https://www.google.com/s2/favicons?domain=claude.ai&sz=32">
                         <span>Claude AI</span>
                     </a>
                 </div>
+                <div class="category-info">
+                    <span>人工智能工具与平台</span>
+                    <span>3 个站点</span>
+                </div>
             </section>
 
             <!-- 视频社区 -->
-            <section class="category-section" data-category="video">
-                <div class="category-header">
-                    <h2><i class="fas fa-video"></i> 视频与娱乐 <span class="category-count" id="count-video">2</span></h2>
-                </div>
-                <div class="sites-container">
-                    <a href="https://www.bilibili.com/" class="site-card" target="_blank" rel="noopener">
+            <section class="category">
+                <h2><i class="fas fa-video"></i> 视频与娱乐</h2>
+                <div class="cards">
+                    <a href="https://www.bilibili.com/" class="card" target="_blank" rel="noopener" data-site-name="哔哩哔哩" data-site-category="视频与娱乐">
                         <img src="https://www.google.com/s2/favicons?domain=bilibili.com&sz=32">
                         <span>哔哩哔哩</span>
                     </a>
-                    <a href="https://www.youtube.com/" class="site-card" target="_blank" rel="noopener">
+                    <a href="https://www.youtube.com/" class="card" target="_blank" rel="noopener" data-site-name="YouTube" data-site-category="视频与娱乐">
                         <img src="https://www.google.com/s2/favicons?domain=youtube.com&sz=32">
                         <span>YouTube</span>
                     </a>
                 </div>
+                <div class="category-info">
+                    <span>视频分享与娱乐平台</span>
+                    <span>2 个站点</span>
+                </div>
             </section>
 
             <!-- 社交聚合 -->
-            <section class="category-section" data-category="social">
-                <div class="category-header">
-                    <h2><i class="fas fa-users"></i> 社交与社区 <span class="category-count" id="count-social">2</span></h2>
-                </div>
-                <div class="sites-container">
-                    <a href="https://www.reddit.com/" class="site-card" target="_blank" rel="noopener">
+            <section class="category">
+                <h2><i class="fas fa-users"></i> 社交与社区</h2>
+                <div class="cards">
+                    <a href="https://www.reddit.com/" class="card" target="_blank" rel="noopener" data-site-name="Reddit" data-site-category="社交与社区">
                         <img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=32">
                         <span>Reddit</span>
                     </a>
-                    <a href="https://news.ycombinator.com/" class="site-card" target="_blank" rel="noopener">
+                    <a href="https://news.ycombinator.com/" class="card" target="_blank" rel="noopener" data-site-name="Hacker News" data-site-category="社交与社区">
                         <img src="https://www.google.com/s2/favicons?domain=ycombinator.com&sz=32">
                         <span>Hacker News</span>
                     </a>
                 </div>
+                <div class="category-info">
+                    <span>社交网络与社区</span>
+                    <span>2 个站点</span>
+                </div>
             </section>
 
             <!-- 图像灵感 -->
-            <section class="category-section" data-category="design">
-                <div class="category-header">
-                    <h2><i class="fas fa-palette"></i> 设计与灵感 <span class="category-count" id="count-design">2</span></h2>
-                </div>
-                <div class="sites-container">
-                    <a href="https://www.pinterest.com/" class="site-card" target="_blank" rel="noopener">
+            <section class="category">
+                <h2><i class="fas fa-palette"></i> 设计与灵感</h2>
+                <div class="cards">
+                    <a href="https://www.pinterest.com/" class="card" target="_blank" rel="noopener" data-site-name="Pinterest" data-site-category="设计与灵感">
                         <img src="https://www.google.com/s2/favicons?domain=pinterest.com&sz=32">
                         <span>Pinterest</span>
                     </a>
-                    <a href="https://dribbble.com/" class="site-card" target="_blank" rel="noopener">
+                    <a href="https://dribbble.com/" class="card" target="_blank" rel="noopener" data-site-name="Dribbble" data-site-category="设计与灵感">
                         <img src="https://www.google.com/s2/favicons?domain=dribbble.com&sz=32">
                         <span>Dribbble</span>
                     </a>
                 </div>
+                <div class="category-info">
+                    <span>设计灵感与创意平台</span>
+                    <span>2 个站点</span>
+                </div>
             </section>
 
             <!-- 工具/技术测试 -->
-            <section class="category-section" data-category="tools">
-                <div class="category-header">
-                    <h2><i class="fas fa-tools"></i> 网络与测试工具 <span class="category-count" id="count-tools">3</span></h2>
-                </div>
-                <div class="sites-container">
-                    <a href="https://test.ustc.edu.cn/" class="site-card" target="_blank" rel="noopener">
+            <section class="category">
+                <h2><i class="fas fa-tools"></i> 网络与测试工具</h2>
+                <div class="cards">
+                    <a href="https://test.ustc.edu.cn/" class="card" target="_blank" rel="noopener" data-site-name="中科大测速" data-site-category="网络与测试工具">
                         <img src="https://www.google.com/s2/favicons?domain=ustc.edu.cn&sz=32">
                         <span>中科大测速</span>
                     </a>
-                    <a href="https://test-ipv6.com/index.html.zh_CN" class="site-card" target="_blank" rel="noopener">
+                    <a href="https://test-ipv6.com/index.html.zh_CN" class="card" target="_blank" rel="noopener" data-site-name="IPv6 测试" data-site-category="网络与测试工具">
                         <img src="https://www.google.com/s2/favicons?domain=test-ipv6.com&sz=32">
                         <span>IPv6 测试</span>
                     </a>
-                    <a href="https://www.speedtest.net/" class="site-card" target="_blank" rel="noopener">
+                    <a href="https://www.speedtest.net/" class="card" target="_blank" rel="noopener" data-site-name="Speedtest" data-site-category="网络与测试工具">
                         <img src="https://www.google.com/s2/favicons?domain=speedtest.net&sz=32">
                         <span>Speedtest</span>
                     </a>
                 </div>
+                <div class="category-info">
+                    <span>网络测试与诊断工具</span>
+                    <span>3 个站点</span>
+                </div>
             </section>
 
             <!-- 技术资源分类 -->
-            <section class="category-section" data-category="dev">
-                <div class="category-header">
-                    <h2><i class="fas fa-code"></i> 开发者资源 <span class="category-count" id="count-dev">5</span></h2>
-                </div>
-                <div class="sites-container">
-                    <a href="https://developer.mozilla.org/zh-CN/" class="site-card" target="_blank" rel="noopener">
+            <section class="category">
+                <h2><i class="fas fa-code"></i> 开发者资源</h2>
+                <div class="cards">
+                    <a href="https://developer.mozilla.org/zh-CN/" class="card" target="_blank" rel="noopener" data-site-name="MDN Web Docs" data-site-category="开发者资源">
                         <img src="https://www.google.com/s2/favicons?domain=developer.mozilla.org&sz=32">
                         <span>MDN Web Docs</span>
                     </a>
-                    <a href="https://stackoverflow.com/" class="site-card" target="_blank" rel="noopener">
+                    <a href="https://stackoverflow.com/" class="card" target="_blank" rel="noopener" data-site-name="Stack Overflow" data-site-category="开发者资源">
                         <img src="https://www.google.com/s2/favicons?domain=stackoverflow.com&sz=32">
                         <span>Stack Overflow</span>
                     </a>
-                    <a href="https://github.com/" class="site-card" target="_blank" rel="noopener">
+                    <a href="https://github.com/" class="card" target="_blank" rel="noopener" data-site-name="GitHub" data-site-category="开发者资源">
                         <img src="https://www.google.com/s2/favicons?domain=github.com&sz=32">
                         <span>GitHub</span>
                     </a>
-                    <a href="https://devdocs.io/" class="site-card" target="_blank" rel="noopener">
+                    <a href="https://devdocs.io/" class="card" target="_blank" rel="noopener" data-site-name="DevDocs" data-site-category="开发者资源">
                         <img src="https://www.google.com/s2/favicons?domain=devdocs.io&sz=32">
                         <span>DevDocs</span>
                     </a>
-                    <a href="https://codepen.io/" class="site-card" target="_blank" rel="noopener">
+                    <a href="https://codepen.io/" class="card" target="_blank" rel="noopener" data-site-name="CodePen" data-site-category="开发者资源">
                         <img src="https://www.google.com/s2/favicons?domain=codepen.io&sz=32">
                         <span>CodePen</span>
                     </a>
                 </div>
+                <div class="category-info">
+                    <span>开发文档与资源</span>
+                    <span>5 个站点</span>
+                </div>
             </section>
 
             <!-- 学习提升分类 -->
-            <section class="category-section" data-category="learning">
-                <div class="category-header">
-                    <h2><i class="fas fa-graduation-cap"></i> 学习与提升 <span class="category-count" id="count-learning">3</span></h2>
-                </div>
-                <div class="sites-container">
-                    <a href="https://www.coursera.org/" class="site-card" target="_blank" rel="noopener">
+            <section class="category">
+                <h2><i class="fas fa-graduation-cap"></i> 学习与提升</h2>
+                <div class="cards">
+                    <a href="https://www.coursera.org/" class="card" target="_blank" rel="noopener" data-site-name="Coursera" data-site-category="学习与提升">
                         <img src="https://www.google.com/s2/favicons?domain=coursera.org&sz=32">
                         <span>Coursera</span>
                     </a>
-                    <a href="https://www.youtube.com/" class="site-card" target="_blank" rel="noopener">
+                    <a href="https://www.youtube.com/" class="card" target="_blank" rel="noopener" data-site-name="YouTube教程" data-site-category="学习与提升">
                         <img src="https://www.google.com/s2/favicons?domain=youtube.com&sz=32">
                         <span>YouTube教程</span>
                     </a>
-                    <a href="https://zhuanlan.zhihu.com/" class="site-card" target="_blank" rel="noopener">
+                    <a href="https://zhuanlan.zhihu.com/" class="card" target="_blank" rel="noopener" data-site-name="知乎专栏" data-site-category="学习与提升">
                         <img src="https://www.google.com/s2/favicons?domain=zhuanlan.zhihu.com&sz=32">
                         <span>知乎专栏</span>
                     </a>
                 </div>
+                <div class="category-info">
+                    <span>学习平台与资源</span>
+                    <span>3 个站点</span>
+                </div>
             </section>
 
             <!-- 生活工具分类 -->
-            <section class="category-section" data-category="life">
-                <div class="category-header">
-                    <h2><i class="fas fa-life-ring"></i> 生活与效率工具 <span class="category-count" id="count-life">3</span></h2>
-                </div>
-                <div class="sites-container">
-                    <a href="https://www.google.com/calendar" class="site-card" target="_blank" rel="noopener">
+            <section class="category">
+                <h2><i class="fas fa-life-ring"></i> 生活与效率工具</h2>
+                <div class="cards">
+                    <a href="https://www.google.com/calendar" class="card" target="_blank" rel="noopener" data-site-name="Google日历" data-site-category="生活与效率工具">
                         <img src="https://www.google.com/s2/favicons?domain=google.com&sz=32">
                         <span>Google日历</span>
                     </a>
-                    <a href="https://www.evernote.com/" class="site-card" target="_blank" rel="noopener">
+                    <a href="https://www.evernote.com/" class="card" target="_blank" rel="noopener" data-site-name="印象笔记" data-site-category="生活与效率工具">
                         <img src="https://www.google.com/s2/favicons?domain=evernote.com&sz=32">
                         <span>印象笔记</span>
                     </a>
-                    <a href="https://www.trello.com/" class="site-card" target="_blank" rel="noopener">
+                    <a href="https://www.trello.com/" class="card" target="_blank" rel="noopener" data-site-name="Trello看板" data-site-category="生活与效率工具">
                         <img src="https://www.google.com/s2/favicons?domain=trello.com&sz=32">
                         <span>Trello看板</span>
                     </a>
                 </div>
+                <div class="category-info">
+                    <span>生活效率工具</span>
+                    <span>3 个站点</span>
+                </div>
             </section>
 
             <!-- 开发者工具分类 -->
-            <section class="category-section" data-category="dev-tools">
-                <div class="category-header">
-                    <h2><i class="fas fa-laptop-code"></i> 开发工具 <span class="category-count" id="count-dev-tools">3</span></h2>
-                </div>
-                <div class="sites-container">
-                    <a href="https://code.visualstudio.com/" class="site-card" target="_blank" rel="noopener">
+            <section class="category">
+                <h2><i class="fas fa-laptop-code"></i> 开发工具</h2>
+                <div class="cards">
+                    <a href="https://code.visualstudio.com/" class="card" target="_blank" rel="noopener" data-site-name="VS Code" data-site-category="开发工具">
                         <img src="https://www.google.com/s2/favicons?domain=code.visualstudio.com&sz=32">
                         <span>VS Code</span>
                     </a>
-                    <a href="https://www.postman.com/" class="site-card" target="_blank" rel="noopener">
+                    <a href="https://www.postman.com/" class="card" target="_blank" rel="noopener" data-site-name="Postman" data-site-category="开发工具">
                         <img src="https://www.google.com/s2/favicons?domain=postman.com&sz=32">
                         <span>Postman</span>
                     </a>
-                    <a href="https://www.ngrok.com/" class="site-card" target="_blank" rel="noopener">
+                    <a href="https://www.ngrok.com/" class="card" target="_blank" rel="noopener" data-site-name="Ngrok" data-site-category="开发工具">
                         <img src="https://www.google.com/s2/favicons?domain=ngrok.com&sz=32">
                         <span>Ngrok</span>
                     </a>
+                </div>
+                <div class="category-info">
+                    <span>开发工具与平台</span>
+                    <span>3 个站点</span>
                 </div>
             </section>
         </div>
@@ -1022,29 +1180,13 @@
         const saveNotesBtn = document.getElementById('save-notes');
         const siteSearchInput = document.getElementById('site-search-input');
         const searchResultsElement = document.getElementById('search-results');
+        const searchSuggestionsElement = document.getElementById('search-suggestions');
         const weatherIconElement = document.getElementById('weather-icon');
         const weatherTempElement = document.getElementById('weather-temp');
         const weatherDescElement = document.getElementById('weather-desc');
-        const categoryTabsElement = document.getElementById('category-tabs');
         
         // 星期名称映射
         const weekDays = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
-        
-        // 分类数据
-        const categories = [
-            { id: 'vps', name: 'VPS 服务器', icon: 'fa-server' },
-            { id: 'domain', name: '域名管理', icon: 'fa-globe' },
-            { id: 'vps-recommend', name: 'VPS推荐', icon: 'fa-shopping-cart' },
-            { id: 'ai', name: 'AI 工具', icon: 'fa-robot' },
-            { id: 'video', name: '视频娱乐', icon: 'fa-video' },
-            { id: 'social', name: '社交社区', icon: 'fa-users' },
-            { id: 'design', name: '设计灵感', icon: 'fa-palette' },
-            { id: 'tools', name: '测试工具', icon: 'fa-tools' },
-            { id: 'dev', name: '开发者资源', icon: 'fa-code' },
-            { id: 'learning', name: '学习提升', icon: 'fa-graduation-cap' },
-            { id: 'life', name: '生活工具', icon: 'fa-life-ring' },
-            { id: 'dev-tools', name: '开发工具', icon: 'fa-laptop-code' }
-        ];
         
         // 根据时间返回问候语
         function getGreeting() {
@@ -1076,17 +1218,8 @@
         
         // 初始化站点计数
         function countSites() {
-            const cards = document.querySelectorAll('.site-card');
+            const cards = document.querySelectorAll('.card');
             siteCountElement.textContent = cards.length;
-            
-            // 更新每个分类的数量
-            categories.forEach(category => {
-                const count = document.querySelectorAll(`[data-category="${category.id}"] .site-card`).length;
-                const countElement = document.getElementById(`count-${category.id}`);
-                if (countElement) {
-                    countElement.textContent = count;
-                }
-            });
         }
         
         // 更新访问时间
@@ -1161,39 +1294,194 @@
             }
         }
         
-        // 站点搜索功能
+        // 增强的站点搜索功能
         function initSiteSearch() {
-            siteSearchInput.addEventListener('input', function() {
-                const query = this.value.trim().toLowerCase();
-                const cards = document.querySelectorAll('.site-card');
-                let matchCount = 0;
+            let allSites = [];
+            let activeSuggestionIndex = -1;
+            
+            // 收集所有站点信息
+            document.querySelectorAll('.card').forEach(card => {
+                const siteName = card.getAttribute('data-site-name') || card.querySelector('span').textContent;
+                const siteCategory = card.getAttribute('data-site-category') || '未分类';
+                const siteUrl = card.getAttribute('href');
+                const siteIcon = card.querySelector('img').src;
                 
-                // 移除之前的高亮
-                cards.forEach(card => {
-                    card.classList.remove('highlight');
+                allSites.push({
+                    name: siteName,
+                    category: siteCategory,
+                    url: siteUrl,
+                    icon: siteIcon,
+                    element: card
                 });
-                
-                if (query === '') {
+            });
+            
+            // 搜索函数
+            function performSearch(query) {
+                if (!query.trim()) {
+                    searchSuggestionsElement.style.display = 'none';
                     searchResultsElement.textContent = '输入关键词搜索站点';
+                    
+                    // 移除之前的高亮
+                    allSites.forEach(site => {
+                        site.element.classList.remove('highlight');
+                    });
+                    
                     return;
                 }
                 
-                // 搜索匹配
-                cards.forEach(card => {
-                    const text = card.querySelector('span').textContent.toLowerCase();
-                    if (text.includes(query)) {
-                        card.classList.add('highlight');
-                        matchCount++;
-                    }
-                });
+                const queryLower = query.toLowerCase();
+                const matchedSites = allSites.filter(site => 
+                    site.name.toLowerCase().includes(queryLower) || 
+                    site.category.toLowerCase().includes(queryLower)
+                );
                 
                 // 更新搜索结果
-                if (matchCount > 0) {
-                    searchResultsElement.textContent = `找到 ${matchCount} 个匹配的站点`;
+                if (matchedSites.length > 0) {
+                    searchResultsElement.textContent = `找到 ${matchedSites.length} 个匹配的站点`;
                 } else {
                     searchResultsElement.textContent = '没有找到匹配的站点';
                 }
+                
+                // 高亮匹配的卡片
+                allSites.forEach(site => {
+                    site.element.classList.remove('highlight');
+                });
+                
+                matchedSites.forEach(site => {
+                    site.element.classList.add('highlight');
+                });
+                
+                // 显示搜索建议
+                showSearchSuggestions(matchedSites, query);
+            }
+            
+            // 显示搜索建议
+            function showSearchSuggestions(sites, query) {
+                searchSuggestionsElement.innerHTML = '';
+                
+                if (sites.length === 0) {
+                    searchSuggestionsElement.style.display = 'none';
+                    return;
+                }
+                
+                // 限制显示数量
+                const displaySites = sites.slice(0, 8);
+                
+                displaySites.forEach((site, index) => {
+                    const suggestionItem = document.createElement('div');
+                    suggestionItem.className = 'search-suggestion-item';
+                    suggestionItem.dataset.index = index;
+                    suggestionItem.dataset.url = site.url;
+                    
+                    // 高亮匹配的文本
+                    const siteName = highlightMatch(site.name, query);
+                    const categoryName = highlightMatch(site.category, query);
+                    
+                    suggestionItem.innerHTML = `
+                        <img src="${site.icon}" class="suggestion-icon" alt="${site.name}">
+                        <div class="suggestion-text">${siteName}</div>
+                        <div class="suggestion-category">${categoryName}</div>
+                    `;
+                    
+                    suggestionItem.addEventListener('click', () => {
+                        window.open(site.url, '_blank');
+                        siteSearchInput.value = site.name;
+                        searchSuggestionsElement.style.display = 'none';
+                        
+                        // 滚动到该卡片位置
+                        site.element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        
+                        // 添加点击效果
+                        site.element.style.transform = 'scale(0.95)';
+                        setTimeout(() => {
+                            site.element.style.transform = '';
+                        }, 200);
+                    });
+                    
+                    searchSuggestionsElement.appendChild(suggestionItem);
+                });
+                
+                searchSuggestionsElement.style.display = 'block';
+                activeSuggestionIndex = -1;
+            }
+            
+            // 高亮匹配的文本
+            function highlightMatch(text, query) {
+                if (!query) return text;
+                
+                const queryLower = query.toLowerCase();
+                const textLower = text.toLowerCase();
+                const index = textLower.indexOf(queryLower);
+                
+                if (index === -1) return text;
+                
+                const before = text.substring(0, index);
+                const match = text.substring(index, index + query.length);
+                const after = text.substring(index + query.length);
+                
+                return `${before}<strong>${match}</strong>${after}`;
+            }
+            
+            // 键盘导航
+            function handleKeyNavigation(e) {
+                const suggestions = searchSuggestionsElement.querySelectorAll('.search-suggestion-item');
+                
+                if (suggestions.length === 0) return;
+                
+                switch(e.key) {
+                    case 'ArrowDown':
+                        e.preventDefault();
+                        activeSuggestionIndex = (activeSuggestionIndex + 1) % suggestions.length;
+                        updateActiveSuggestion(suggestions);
+                        break;
+                        
+                    case 'ArrowUp':
+                        e.preventDefault();
+                        activeSuggestionIndex = activeSuggestionIndex <= 0 ? suggestions.length - 1 : activeSuggestionIndex - 1;
+                        updateActiveSuggestion(suggestions);
+                        break;
+                        
+                    case 'Enter':
+                        if (activeSuggestionIndex >= 0 && activeSuggestionIndex < suggestions.length) {
+                            e.preventDefault();
+                            suggestions[activeSuggestionIndex].click();
+                        }
+                        break;
+                        
+                    case 'Escape':
+                        searchSuggestionsElement.style.display = 'none';
+                        break;
+                }
+            }
+            
+            // 更新活动建议项
+            function updateActiveSuggestion(suggestions) {
+                suggestions.forEach((item, index) => {
+                    item.classList.toggle('active', index === activeSuggestionIndex);
+                });
+                
+                // 滚动到活动项
+                if (activeSuggestionIndex >= 0 && activeSuggestionIndex < suggestions.length) {
+                    suggestions[activeSuggestionIndex].scrollIntoView({ block: 'nearest' });
+                }
+            }
+            
+            // 事件监听
+            siteSearchInput.addEventListener('input', function() {
+                performSearch(this.value);
             });
+            
+            siteSearchInput.addEventListener('keydown', handleKeyNavigation);
+            
+            // 点击外部关闭建议
+            document.addEventListener('click', (e) => {
+                if (!siteSearchInput.contains(e.target) && !searchSuggestionsElement.contains(e.target)) {
+                    searchSuggestionsElement.style.display = 'none';
+                }
+            });
+            
+            // 初始搜索
+            performSearch('');
         }
         
         // 模拟天气数据
@@ -1233,71 +1521,19 @@
             }
         }
         
-        // 创建分类标签
-        function createCategoryTabs() {
-            // 创建"全部"标签
-            const allTab = document.createElement('button');
-            allTab.className = 'category-tab active';
-            allTab.innerHTML = '<i class="fas fa-th"></i> 全部';
-            allTab.setAttribute('data-category', 'all');
-            allTab.addEventListener('click', () => filterSites('all'));
-            categoryTabsElement.appendChild(allTab);
-            
-            // 创建各分类标签
-            categories.forEach(category => {
-                const tab = document.createElement('button');
-                tab.className = 'category-tab';
-                tab.innerHTML = `<i class="fas ${category.icon}"></i> ${category.name}`;
-                tab.setAttribute('data-category', category.id);
-                tab.addEventListener('click', () => filterSites(category.id));
-                categoryTabsElement.appendChild(tab);
-            });
-        }
-        
-        // 站点筛选功能
-        function filterSites(categoryId) {
-            // 更新标签状态
-            document.querySelectorAll('.category-tab').forEach(tab => {
-                tab.classList.remove('active');
-                if (tab.getAttribute('data-category') === categoryId) {
-                    tab.classList.add('active');
-                }
-            });
-            
-            // 获取所有分类区域
-            const categorySections = document.querySelectorAll('.category-section');
-            
-            if (categoryId === 'all') {
-                // 显示所有分类
-                categorySections.forEach(section => {
-                    section.style.display = 'block';
-                });
-            } else {
-                // 只显示选中的分类
-                categorySections.forEach(section => {
-                    if (section.getAttribute('data-category') === categoryId) {
-                        section.style.display = 'block';
-                    } else {
-                        section.style.display = 'none';
-                    }
-                });
-            }
-        }
-        
         // 对话框功能
         function showAbout() {
-            alert('关于本站\n\n这是一个高度自定义的个人导航页/工作台，旨在提高您的工作和学习效率。\n\n功能特色：\n• 深色/浅色主题切换\n• 实时时间与天气显示\n• 快速笔记功能\n• 站点内搜索\n• 响应式设计\n• 分类筛选功能\n• 平铺展示，一目了然');
+            alert('关于本站\n\n这是一个高度自定义的个人导航页/工作台，旨在提高您的工作和学习效率。\n\n功能特色：\n• 深色/浅色主题切换\n• 实时时间与天气显示\n• 快速笔记功能\n• 站点内搜索（支持直接跳转）\n• 响应式设计\n• 个性化站点管理\n• 横向直接展示所有网站，一目了然');
         }
         
         function showInstructions() {
-            alert('使用说明\n\n1. 点击站点卡片可直接访问相应网站\n2. 使用顶部搜索栏进行网络搜索\n3. 使用站点搜索框查找本页面的站点\n4. 点击月亮图标切换深色/浅色主题\n5. 使用笔记图标显示/隐藏快速笔记功能\n6. 笔记内容会自动保存到本地\n7. 点击分类标签可筛选显示对应分类的站点\n8. 点击"全部"标签可显示所有站点');
+            alert('使用说明\n\n1. 点击站点卡片可直接访问相应网站\n2. 使用顶部搜索栏进行网络搜索\n3. 使用站点搜索框查找本页面的站点\n4. 点击月亮图标切换深色/浅色主题\n5. 使用笔记图标显示/隐藏快速笔记功能\n6. 笔记内容会自动保存到本地\n7. 在站点搜索框中输入关键词，会显示匹配的站点列表\n8. 使用上下箭头选择，回车键直接跳转，或鼠标点击跳转\n9. 按ESC键可关闭搜索建议');
         }
         
         function showFeedback() {
             const feedback = prompt('请留下您的宝贵建议或反馈：', '');
             if (feedback && feedback.trim() !== '') {
                 alert('感谢您的反馈！我们会不断改进。');
-                // 这里实际应用中可以将反馈发送到服务器
                 console.log('用户反馈：', feedback);
             }
         }
@@ -1331,9 +1567,6 @@
             // 初始化天气
             initWeather();
             
-            // 创建分类标签
-            createCategoryTabs();
-            
             // 事件监听
             themeToggleBtn.addEventListener('click', toggleTheme);
             refreshBtn.addEventListener('click', () => location.reload());
@@ -1343,7 +1576,7 @@
             });
             
             // 为所有卡片添加点击动画
-            document.querySelectorAll('.site-card').forEach(card => {
+            document.querySelectorAll('.card').forEach(card => {
                 card.addEventListener('click', function() {
                     this.style.transform = 'scale(0.95)';
                     setTimeout(() => {
@@ -1354,7 +1587,8 @@
             
             // 控制台欢迎信息
             console.log('%c🔍 Nastyoak的个人工作台已加载完成！', 'color: #2e7d57; font-size: 16px; font-weight: bold;');
-            console.log('%c✨ 发现' + document.querySelectorAll('.site-card').length + '个精选站点', 'color: #3cb371;');
+            console.log('%c✨ 发现' + document.querySelectorAll('.card').length + '个精选站点', 'color: #3cb371;');
+            console.log('%c💡 使用搜索功能可直接跳转到匹配的网站', 'color: #4cce7b;');
         }
         
         // 页面加载完成后初始化

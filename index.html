@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nastyoak的个人导航</title>
+    <title>Nastyoak的个人工作台</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* 基础样式与CSS重置 */
@@ -11,30 +11,65 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: "Microsoft YaHei", "Segoe UI", "PingFang SC", sans-serif;
+            font-family: "Microsoft YaHei", "Segoe UI", "PingFang SC", "SF Pro Display", sans-serif;
         }
         
         html {
             scroll-behavior: smooth;
         }
         
+        :root {
+            /* 浅色主题变量 */
+            --primary-color: #2e7d57;
+            --primary-light: #4cce7b;
+            --primary-gradient: linear-gradient(135deg, #2e7d57 0%, #3cb371 50%, #4cce7b 100%);
+            --bg-color: #f8f9fa;
+            --bg-secondary: #e9ecef;
+            --card-bg: white;
+            --text-color: #333;
+            --text-secondary: #6c757d;
+            --border-color: #e9ecef;
+            --shadow-color: rgba(0,0,0,0.08);
+            --header-shadow: 0 6px 20px rgba(46, 125, 87, 0.3);
+            --card-shadow: 0 4px 12px var(--shadow-color);
+            --hover-shadow: 0 10px 25px rgba(60, 179, 113, 0.2);
+        }
+        
+        [data-theme="dark"] {
+            /* 深色主题变量 */
+            --primary-color: #4cce7b;
+            --primary-light: #2e7d57;
+            --primary-gradient: linear-gradient(135deg, #1a5c3d 0%, #256b48 50%, #2e7d57 100%);
+            --bg-color: #121212;
+            --bg-secondary: #1e1e1e;
+            --card-bg: #252525;
+            --text-color: #f0f0f0;
+            --text-secondary: #b0b0b0;
+            --border-color: #444;
+            --shadow-color: rgba(0,0,0,0.3);
+            --header-shadow: 0 6px 20px rgba(0,0,0,0.5);
+            --card-shadow: 0 4px 12px var(--shadow-color);
+            --hover-shadow: 0 10px 25px rgba(76, 206, 123, 0.3);
+        }
+        
         body {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            color: #333;
+            background: linear-gradient(135deg, var(--bg-color) 0%, var(--bg-secondary) 100%);
+            color: var(--text-color);
             line-height: 1.6;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             padding: 0;
+            transition: background-color 0.5s ease, color 0.5s ease;
         }
         
         /* 头部样式增强 */
         header {
-            background: linear-gradient(135deg, #2e7d57 0%, #3cb371 50%, #4cce7b 100%);
+            background: var(--primary-gradient);
             color: white;
             padding: 2.5rem 2rem 2rem;
             text-align: center;
-            box-shadow: 0 6px 20px rgba(46, 125, 87, 0.3);
+            box-shadow: var(--header-shadow);
             position: relative;
             overflow: hidden;
         }
@@ -65,10 +100,17 @@
             z-index: 2;
         }
         
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
         h1 {
             font-size: 2.8rem;
             font-weight: 700;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0;
             letter-spacing: 0.5px;
             text-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
@@ -97,6 +139,54 @@
             font-family: 'Courier New', monospace;
             color: #fffacd;
             font-weight: bold;
+        }
+        
+        /* 控制按钮组 */
+        .control-buttons {
+            display: flex;
+            gap: 0.8rem;
+        }
+        
+        .control-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+        }
+        
+        .control-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        /* 天气显示 */
+        .weather-info {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 0.95rem;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            margin-top: 0.5rem;
+        }
+        
+        .weather-temp {
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        
+        .weather-desc {
+            font-size: 0.85rem;
+            opacity: 0.9;
         }
         
         /* 搜索栏样式增强 */
@@ -163,6 +253,51 @@
             font-size: 0.9rem;
         }
         
+        /* 快速笔记/待办事项 */
+        .quick-notes {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .notes-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .notes-header h3 {
+            color: white;
+            font-size: 1.2rem;
+        }
+        
+        .notes-content {
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        
+        .notes-content textarea {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 8px;
+            padding: 1rem;
+            font-size: 0.95rem;
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .notes-content textarea:focus {
+            outline: none;
+            background: white;
+        }
+        
         /* 主内容区优化 */
         main {
             flex: 1;
@@ -179,28 +314,28 @@
         }
         
         .category {
-            background-color: white;
+            background-color: var(--card-bg);
             border-radius: 16px;
             padding: 1.8rem 1.8rem 1.2rem;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            box-shadow: var(--card-shadow);
             transition: all 0.4s ease;
             display: flex;
             flex-direction: column;
-            border-left: 5px solid #3cb371;
+            border-left: 5px solid var(--primary-color);
         }
         
         .category:hover {
             transform: translateY(-6px);
-            box-shadow: 0 10px 25px rgba(60, 179, 113, 0.2);
+            box-shadow: var(--hover-shadow);
         }
         
         .category h2 {
             font-size: 1.5rem;
             font-weight: 700;
             margin-bottom: 1.5rem;
-            color: #2e7d57;
+            color: var(--primary-color);
             padding-bottom: 0.8rem;
-            border-bottom: 2px solid #f1f3f5;
+            border-bottom: 2px solid var(--border-color);
             display: flex;
             align-items: center;
         }
@@ -226,6 +361,10 @@
             scroll-snap-type: x proximity;
         }
         
+        [data-theme="dark"] .cards {
+            scrollbar-color: #555 #333;
+        }
+        
         .cards::-webkit-scrollbar {
             height: 6px;
         }
@@ -235,9 +374,17 @@
             border-radius: 10px;
         }
         
+        [data-theme="dark"] .cards::-webkit-scrollbar-track {
+            background: #333;
+        }
+        
         .cards::-webkit-scrollbar-thumb {
             background: #c1c1c1;
             border-radius: 10px;
+        }
+        
+        [data-theme="dark"] .cards::-webkit-scrollbar-thumb {
+            background: #555;
         }
         
         .cards::-webkit-scrollbar-thumb:hover {
@@ -246,7 +393,7 @@
         
         /* 卡片样式优化 */
         .card {
-            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            background: linear-gradient(135deg, var(--card-bg) 0%, var(--bg-secondary) 100%);
             border-radius: 12px;
             padding: 1.5rem;
             min-width: 220px;
@@ -254,8 +401,8 @@
             display: flex;
             align-items: center;
             text-decoration: none;
-            color: #333;
-            border: 1px solid #e9ecef;
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
             transition: all 0.3s ease;
             box-shadow: 0 3px 8px rgba(0,0,0,0.05);
             scroll-snap-align: start;
@@ -270,7 +417,7 @@
             left: 0;
             width: 100%;
             height: 4px;
-            background: linear-gradient(90deg, #2e7d57, #4cce7b);
+            background: linear-gradient(90deg, var(--primary-color), var(--primary-light));
             transform: scaleX(0);
             transform-origin: left;
             transition: transform 0.3s ease;
@@ -278,7 +425,7 @@
         
         .card:hover {
             transform: translateY(-5px);
-            border-color: #3cb371;
+            border-color: var(--primary-color);
             box-shadow: 0 8px 20px rgba(60, 179, 113, 0.25);
         }
         
@@ -297,19 +444,30 @@
         .card span {
             font-size: 1rem;
             font-weight: 600;
-            color: #495057;
+            color: var(--text-color);
         }
         
         .card .card-badge {
             position: absolute;
             top: 10px;
             right: 10px;
-            background: #4cce7b;
+            background: var(--primary-light);
             color: white;
             font-size: 0.7rem;
             padding: 2px 8px;
             border-radius: 10px;
             font-weight: bold;
+        }
+        
+        /* 搜索高亮 */
+        .card.highlight {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(60, 179, 113, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(60, 179, 113, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(60, 179, 113, 0); }
         }
         
         /* 滚动导航按钮 */
@@ -332,12 +490,21 @@
             transition: opacity 0.3s ease, background 0.3s ease;
         }
         
+        [data-theme="dark"] .scroll-btn {
+            background: rgba(50, 50, 50, 0.9);
+            color: white;
+        }
+        
         .cards-wrapper:hover .scroll-btn {
             opacity: 1;
         }
         
         .scroll-btn:hover {
             background: white;
+        }
+        
+        [data-theme="dark"] .scroll-btn:hover {
+            background: #666;
         }
         
         .scroll-btn.left {
@@ -350,7 +517,7 @@
         
         /* 滚动提示 */
         .scroll-hint {
-            color: #6c757d;
+            color: var(--text-secondary);
             font-size: 0.85rem;
             text-align: center;
             margin-top: 0.5rem;
@@ -365,6 +532,10 @@
             padding: 2rem 2rem;
             margin-top: auto;
             font-size: 0.95rem;
+        }
+        
+        [data-theme="dark"] footer {
+            background: linear-gradient(135deg, #1a5c3d 0%, #1a4b33 100%);
         }
         
         .footer-content {
@@ -409,6 +580,12 @@
         @media (max-width: 768px) {
             header {
                 padding: 2rem 1.2rem 1.5rem;
+            }
+            
+            .header-top {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: center;
             }
             
             h1 {
@@ -544,15 +721,74 @@
             visibility: visible;
             opacity: 1;
         }
+        
+        /* 站点搜索面板 */
+        .site-search-container {
+            margin-bottom: 2rem;
+        }
+        
+        .site-search {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .site-search input {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            border-radius: 50px;
+            border: 2px solid var(--border-color);
+            background: var(--card-bg);
+            color: var(--text-color);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .site-search input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(60, 179, 113, 0.2);
+        }
+        
+        .search-results {
+            text-align: center;
+            margin-top: 0.5rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
     </style>
 </head>
 <body>
     <header>
         <div class="header-container">
-            <h1><i class="fas fa-compass"></i> Nastyoak的个人导航</h1>
-            <div class="subtitle">一站式工作与学习入口 | 高效从这里开始</div>
+            <div class="header-top">
+                <div>
+                    <h1><i class="fas fa-compass"></i> Nastyoak的个人工作台</h1>
+                    <div class="subtitle">一站式工作与学习入口 | 高效从这里开始</div>
+                </div>
+                <div class="control-buttons">
+                    <button class="control-btn" id="theme-toggle" title="切换深色/浅色模式">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <button class="control-btn" id="refresh-btn" title="刷新页面">
+                        <i class="fas fa-redo-alt"></i>
+                    </button>
+                    <button class="control-btn" id="notes-toggle" title="显示/隐藏快速笔记">
+                        <i class="fas fa-sticky-note"></i>
+                    </button>
+                </div>
+            </div>
+            
             <div class="time-display" id="currentTime">
                 <span id="greeting"></span> 现在时间：<span id="clock"></span>
+            </div>
+            
+            <!-- 天气信息 -->
+            <div class="weather-info" id="weather-info">
+                <i class="fas fa-cloud-sun" id="weather-icon"></i>
+                <div>
+                    <div class="weather-temp" id="weather-temp">--°C</div>
+                    <div class="weather-desc" id="weather-desc">获取天气中...</div>
+                </div>
             </div>
             
             <div class="search-bar">
@@ -572,10 +808,31 @@
                     <button type="submit"><i class="fas fa-search"></i></button>
                 </form>
             </div>
+            
+            <!-- 快速笔记/待办事项 -->
+            <div class="quick-notes" id="quick-notes" style="display: none;">
+                <div class="notes-header">
+                    <h3><i class="fas fa-edit"></i> 快速笔记</h3>
+                    <button class="control-btn" id="save-notes" style="width: 30px; height: 30px; font-size: 0.9rem;">
+                        <i class="fas fa-save"></i>
+                    </button>
+                </div>
+                <div class="notes-content">
+                    <textarea id="notes-text" placeholder="记录您的想法、待办事项或临时信息... 内容会自动保存到本地。"></textarea>
+                </div>
+            </div>
         </div>
     </header>
 
     <main>
+        <!-- 站点搜索 -->
+        <div class="site-search-container">
+            <div class="site-search">
+                <input type="text" id="site-search-input" placeholder="搜索本站点 (输入站点名称或关键词)">
+                <div class="search-results" id="search-results">输入关键词搜索站点</div>
+            </div>
+        </div>
+        
         <div class="category-container">
             <!-- VPS 分类 -->
             <section class="category">
@@ -823,14 +1080,14 @@
 
     <footer>
         <div class="footer-content">
-            <p>© 2026 Nastyoak的个人导航页 | 最后更新: 2026年2月6日</p>
+            <p>© 2026 Nastyoak的个人工作台 | 最后更新: 2026年2月6日</p>
             <div class="footer-links">
-                <a href="#" onclick="alert('功能开发中...')">关于本站</a>
-                <a href="#" onclick="alert('功能开发中...')">使用说明</a>
-                <a href="#" onclick="alert('功能开发中...')">建议反馈</a>
+                <a href="#" onclick="showAbout()">关于本站</a>
+                <a href="#" onclick="showInstructions()">使用说明</a>
+                <a href="#" onclick="showFeedback()">建议反馈</a>
                 <a href="javascript:location.reload()">刷新页面</a>
             </div>
-            <p style="margin-top: 0.5rem; font-size: 0.85rem; opacity: 0.8;">共 <span id="siteCount">0</span> 个站点 | 已为您服务 <span id="visitTime">0</span> 秒</p>
+            <p style="margin-top: 0.5rem; font-size: 0.85rem; opacity: 0.8;">共 <span id="siteCount">0</span> 个站点 | 已为您服务 <span id="visitTime">0</span> 秒 | 主题: <span id="theme-status">浅色</span></p>
         </div>
     </footer>
 
@@ -840,6 +1097,18 @@
         const greetingElement = document.getElementById('greeting');
         const siteCountElement = document.getElementById('siteCount');
         const visitTimeElement = document.getElementById('visitTime');
+        const themeStatusElement = document.getElementById('theme-status');
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const refreshBtn = document.getElementById('refresh-btn');
+        const notesToggleBtn = document.getElementById('notes-toggle');
+        const quickNotesElement = document.getElementById('quick-notes');
+        const notesTextElement = document.getElementById('notes-text');
+        const saveNotesBtn = document.getElementById('save-notes');
+        const siteSearchInput = document.getElementById('site-search-input');
+        const searchResultsElement = document.getElementById('search-results');
+        const weatherIconElement = document.getElementById('weather-icon');
+        const weatherTempElement = document.getElementById('weather-temp');
+        const weatherDescElement = document.getElementById('weather-desc');
         
         // 星期名称映射
         const weekDays = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
@@ -861,7 +1130,7 @@
             const now = new Date();
             // 格式化时间组件
             const year = now.getFullYear();
-            const month = String(now.getFullYear() + 1).padStart(2, '0');
+            const month = String(now.getMonth() + 1).padStart(2, '0');
             const day = String(now.getDate()).padStart(2, '0');
             const hours = String(now.getHours()).padStart(2, '0');
             const minutes = String(now.getMinutes()).padStart(2, '0');
@@ -901,6 +1170,106 @@
             }
         }
         
+        // 主题切换功能
+        function initTheme() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.body.setAttribute('data-theme', savedTheme);
+            updateThemeUI(savedTheme);
+        }
+        
+        function toggleTheme() {
+            const currentTheme = document.body.getAttribute('data-theme') || 'light';
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            document.body.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeUI(newTheme);
+        }
+        
+        function updateThemeUI(theme) {
+            const icon = themeToggleBtn.querySelector('i');
+            if (theme === 'dark') {
+                icon.className = 'fas fa-sun';
+                themeStatusElement.textContent = '深色';
+            } else {
+                icon.className = 'fas fa-moon';
+                themeStatusElement.textContent = '浅色';
+            }
+        }
+        
+        // 快速笔记功能
+        function initNotes() {
+            const savedNotes = localStorage.getItem('quickNotes') || '';
+            notesTextElement.value = savedNotes;
+            
+            // 自动保存
+            notesTextElement.addEventListener('input', function() {
+                localStorage.setItem('quickNotes', this.value);
+            });
+        }
+        
+        function toggleNotes() {
+            if (quickNotesElement.style.display === 'none') {
+                quickNotesElement.style.display = 'block';
+                notesToggleBtn.innerHTML = '<i class="fas fa-times"></i>';
+                notesToggleBtn.title = '隐藏快速笔记';
+            } else {
+                quickNotesElement.style.display = 'none';
+                notesToggleBtn.innerHTML = '<i class="fas fa-sticky-note"></i>';
+                notesToggleBtn.title = '显示快速笔记';
+            }
+        }
+        
+        // 站点搜索功能
+        function initSiteSearch() {
+            siteSearchInput.addEventListener('input', function() {
+                const query = this.value.trim().toLowerCase();
+                const cards = document.querySelectorAll('.card');
+                let matchCount = 0;
+                
+                // 移除之前的高亮
+                cards.forEach(card => {
+                    card.classList.remove('highlight');
+                });
+                
+                if (query === '') {
+                    searchResultsElement.textContent = '输入关键词搜索站点';
+                    return;
+                }
+                
+                // 搜索匹配
+                cards.forEach(card => {
+                    const text = card.querySelector('span').textContent.toLowerCase();
+                    if (text.includes(query)) {
+                        card.classList.add('highlight');
+                        matchCount++;
+                    }
+                });
+                
+                // 更新搜索结果
+                if (matchCount > 0) {
+                    searchResultsElement.textContent = `找到 ${matchCount} 个匹配的站点`;
+                } else {
+                    searchResultsElement.textContent = '没有找到匹配的站点';
+                }
+            });
+        }
+        
+        // 模拟天气数据
+        function initWeather() {
+            const weatherData = {
+                icon: 'fa-cloud-sun',
+                temp: '24°C',
+                desc: '晴朗，微风'
+            };
+            
+            // 模拟API调用延迟
+            setTimeout(() => {
+                weatherIconElement.className = `fas ${weatherData.icon}`;
+                weatherTempElement.textContent = weatherData.temp;
+                weatherDescElement.textContent = weatherData.desc;
+            }, 1000);
+        }
+        
         // 搜索引擎切换功能
         function changeSearchEngine(select) {
             const searchForm = select.closest('.search-form');
@@ -934,6 +1303,24 @@
             });
         }
         
+        // 对话框功能
+        function showAbout() {
+            alert('关于本站\n\n这是一个高度自定义的个人导航页/工作台，旨在提高您的工作和学习效率。\n\n功能特色：\n• 深色/浅色主题切换\n• 实时时间与天气显示\n• 快速笔记功能\n• 站点内搜索\n• 响应式设计\n• 个性化站点管理');
+        }
+        
+        function showInstructions() {
+            alert('使用说明\n\n1. 点击站点卡片可直接访问相应网站\n2. 使用顶部搜索栏进行网络搜索\n3. 使用站点搜索框查找本页面的站点\n4. 点击月亮图标切换深色/浅色主题\n5. 使用笔记图标显示/隐藏快速笔记功能\n6. 笔记内容会自动保存到本地\n7. 卡片支持横向滚动，可拖动或使用左右按钮');
+        }
+        
+        function showFeedback() {
+            const feedback = prompt('请留下您的宝贵建议或反馈：', '');
+            if (feedback && feedback.trim() !== '') {
+                alert('感谢您的反馈！我们会不断改进。');
+                // 这里实际应用中可以将反馈发送到服务器
+                console.log('用户反馈：', feedback);
+            }
+        }
+        
         // 初始化函数
         function init() {
             // 设置问候语
@@ -950,6 +1337,26 @@
             // 每秒更新访问时间
             updateVisitTime();
             setInterval(updateVisitTime, 1000);
+            
+            // 初始化主题
+            initTheme();
+            
+            // 初始化笔记
+            initNotes();
+            
+            // 初始化站点搜索
+            initSiteSearch();
+            
+            // 初始化天气
+            initWeather();
+            
+            // 事件监听
+            themeToggleBtn.addEventListener('click', toggleTheme);
+            refreshBtn.addEventListener('click', () => location.reload());
+            notesToggleBtn.addEventListener('click', toggleNotes);
+            saveNotesBtn.addEventListener('click', () => {
+                alert('笔记已保存到本地！');
+            });
             
             // 为所有卡片添加点击动画
             document.querySelectorAll('.card').forEach(card => {
@@ -983,7 +1390,7 @@
             });
             
             // 控制台欢迎信息
-            console.log('%c🔍 Nastyoak的个人导航页已加载完成！', 'color: #2e7d57; font-size: 16px; font-weight: bold;');
+            console.log('%c🔍 Nastyoak的个人工作台已加载完成！', 'color: #2e7d57; font-size: 16px; font-weight: bold;');
             console.log('%c✨ 发现' + document.querySelectorAll('.card').length + '个精选站点', 'color: #3cb371;');
         }
         

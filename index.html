@@ -3,163 +3,253 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nastyoak的导航页</title>
+    <title>Nastyoak的个人导航</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* 基础样式 */
+        /* 基础样式与CSS重置 */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: "Microsoft YaHei", "微软雅黑", sans-serif;
+            font-family: "Microsoft YaHei", "Segoe UI", "PingFang SC", sans-serif;
+        }
+        
+        html {
+            scroll-behavior: smooth;
         }
         
         body {
-            background-color: #f8f9fa;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
             color: #333;
             line-height: 1.6;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            padding: 0;
         }
         
-        /* 头部样式 */
+        /* 头部样式增强 */
         header {
-            background: linear-gradient(135deg, #2e8b57 0%, #3cb371 100%);
+            background: linear-gradient(135deg, #2e7d57 0%, #3cb371 50%, #4cce7b 100%);
             color: white;
-            padding: 2rem 2rem 1.5rem;
+            padding: 2.5rem 2rem 2rem;
             text-align: center;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            box-shadow: 0 6px 20px rgba(46, 125, 87, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 30px 30px;
+            opacity: 0.2;
+            animation: float 20s linear infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(-30px, -30px) rotate(360deg); }
         }
         
         .header-container {
             max-width: 1400px;
             margin: 0 auto;
             width: 100%;
+            position: relative;
+            z-index: 2;
         }
         
         h1 {
-            font-size: 2.5rem;
-            font-weight: 600;
-            letter-spacing: 1px;
+            font-size: 2.8rem;
+            font-weight: 700;
             margin-bottom: 0.5rem;
+            letter-spacing: 0.5px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 1.8rem;
+            font-weight: 300;
         }
         
         .time-display {
-            font-size: 1.1rem;
-            opacity: 0.9;
-            margin-bottom: 1.5rem;
-            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(5px);
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            display: inline-block;
+            margin-bottom: 2rem;
+            font-size: 1.2rem;
+            font-weight: 500;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
         
-        /* 搜索栏样式 */
+        #clock {
+            font-family: 'Courier New', monospace;
+            color: #fffacd;
+            font-weight: bold;
+        }
+        
+        /* 搜索栏样式增强 */
         .search-bar {
             display: flex;
             justify-content: center;
-            gap: 1rem;
+            gap: 1.5rem;
             flex-wrap: wrap;
             margin-bottom: 0.5rem;
         }
         
         .search-form {
             display: flex;
-            max-width: 300px;
+            max-width: 380px;
             width: 100%;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            border-radius: 50px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .search-form:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.2);
         }
         
         .search-form input[type="text"] {
             flex: 1;
-            padding: 0.8rem 1rem;
+            padding: 0.9rem 1.5rem;
             border: none;
-            border-radius: 4px 0 0 4px;
-            font-size: 0.95rem;
-            background: rgba(255, 255, 255, 0.95);
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.98);
+            color: #333;
+        }
+        
+        .search-form input[type="text"]:focus {
+            outline: none;
+            background: white;
         }
         
         .search-form button[type="submit"] {
             background-color: #2e7d57;
             color: white;
             border: none;
-            padding: 0.8rem 1.2rem;
-            border-radius: 0 4px 4px 0;
+            padding: 0 1.8rem;
             cursor: pointer;
-            font-size: 1.1rem;
-            transition: background-color 0.3s ease;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
         .search-form button[type="submit"]:hover {
-            background-color: #256b48;
+            background-color: #1a5c3d;
         }
         
-        /* 主内容区 */
+        .search-form select {
+            padding: 0 1rem;
+            border: none;
+            background-color: #f1f3f5;
+            border-left: 1px solid #ddd;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        
+        /* 主内容区优化 */
         main {
             flex: 1;
-            padding: 2rem 2rem 3rem;
+            padding: 2.5rem 2rem 3.5rem;
             max-width: 1400px;
             margin: 0 auto;
             width: 100%;
         }
         
         .category-container {
-            display: flex;
-            flex-direction: column;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
             gap: 2.5rem;
         }
         
         .category {
             background-color: white;
-            border-radius: 12px;
-            padding: 1.5rem 1.5rem 1rem;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 16px;
+            padding: 1.8rem 1.8rem 1.2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: all 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            border-left: 5px solid #3cb371;
         }
         
         .category:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+            transform: translateY(-6px);
+            box-shadow: 0 10px 25px rgba(60, 179, 113, 0.2);
         }
         
         .category h2 {
-            font-size: 1.4rem;
-            font-weight: 600;
-            margin-bottom: 1.2rem;
-            color: #2e8b57;
-            padding-left: 1rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #2e7d57;
+            padding-bottom: 0.8rem;
+            border-bottom: 2px solid #f1f3f5;
+            display: flex;
+            align-items: center;
+        }
+        
+        .category h2 i {
+            margin-right: 0.8rem;
+            font-size: 1.3rem;
+        }
+        
+        /* 横向滚动卡片容器增强 */
+        .cards-wrapper {
             position: relative;
         }
         
-        .category h2::before {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 4px;
-            height: 1.2em;
-            background: linear-gradient(to bottom, #2e8b57, #3cb371);
-            border-radius: 2px;
-        }
-        
-        /* 横向滚动卡片容器 */
         .cards {
             display: flex;
             overflow-x: auto;
             scroll-behavior: smooth;
-            scrollbar-width: none; /* Firefox */
-            -ms-overflow-style: none; /* IE/Edge */
-            gap: 1rem;
-            padding: 0.5rem 0.5rem 1rem;
+            scrollbar-width: thin;
+            scrollbar-color: #c1c1c1 #f1f1f1;
+            gap: 1.2rem;
+            padding: 1rem 0.5rem 1.5rem;
+            scroll-snap-type: x proximity;
         }
         
         .cards::-webkit-scrollbar {
-            display: none; /* Chrome/Safari/Opera */
+            height: 6px;
         }
         
-        /* 卡片样式 */
-        .card {
-            background: white;
+        .cards::-webkit-scrollbar-track {
+            background: #f1f1f1;
             border-radius: 10px;
-            padding: 1.2rem 1.5rem;
-            min-width: 200px;
+        }
+        
+        .cards::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 10px;
+        }
+        
+        .cards::-webkit-scrollbar-thumb:hover {
+            background: #a8a8a8;
+        }
+        
+        /* 卡片样式优化 */
+        .card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 12px;
+            padding: 1.5rem;
+            min-width: 220px;
             flex-shrink: 0;
             display: flex;
             align-items: center;
@@ -167,50 +257,177 @@
             color: #333;
             border: 1px solid #e9ecef;
             transition: all 0.3s ease;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+            scroll-snap-align: start;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #2e7d57, #4cce7b);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
         }
         
         .card:hover {
-            transform: translateY(-4px);
+            transform: translateY(-5px);
             border-color: #3cb371;
-            box-shadow: 0 4px 12px rgba(60, 179, 113, 0.2);
+            box-shadow: 0 8px 20px rgba(60, 179, 113, 0.25);
+        }
+        
+        .card:hover::before {
+            transform: scaleX(1);
         }
         
         .card img {
-            width: 24px;
-            height: 24px;
-            margin-right: 0.8rem;
+            width: 28px;
+            height: 28px;
+            margin-right: 1rem;
             object-fit: contain;
+            border-radius: 6px;
         }
         
         .card span {
-            font-size: 0.95rem;
-            font-weight: 500;
+            font-size: 1rem;
+            font-weight: 600;
             color: #495057;
         }
         
-        /* 页脚样式 */
-        footer {
-            background-color: #2e8b57;
+        .card .card-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #4cce7b;
             color: white;
-            text-align: center;
-            padding: 1.5rem 2rem;
-            margin-top: auto;
+            font-size: 0.7rem;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-weight: bold;
         }
         
-        /* 响应式设计 */
+        /* 滚动导航按钮 */
+        .scroll-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            z-index: 10;
+            opacity: 0;
+            transition: opacity 0.3s ease, background 0.3s ease;
+        }
+        
+        .cards-wrapper:hover .scroll-btn {
+            opacity: 1;
+        }
+        
+        .scroll-btn:hover {
+            background: white;
+        }
+        
+        .scroll-btn.left {
+            left: -20px;
+        }
+        
+        .scroll-btn.right {
+            right: -20px;
+        }
+        
+        /* 滚动提示 */
+        .scroll-hint {
+            color: #6c757d;
+            font-size: 0.85rem;
+            text-align: center;
+            margin-top: 0.5rem;
+            font-style: italic;
+        }
+        
+        /* 页脚样式增强 */
+        footer {
+            background: linear-gradient(135deg, #2e7d57 0%, #256b48 100%);
+            color: white;
+            text-align: center;
+            padding: 2rem 2rem;
+            margin-top: auto;
+            font-size: 0.95rem;
+        }
+        
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            margin-top: 0.5rem;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.85);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+        
+        /* 响应式设计优化 */
+        @media (max-width: 1200px) {
+            .category-container {
+                grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .category-container {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+        }
+        
         @media (max-width: 768px) {
             header {
-                padding: 1.5rem 1rem 1rem;
+                padding: 2rem 1.2rem 1.5rem;
             }
             
             h1 {
-                font-size: 2rem;
+                font-size: 2.2rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+            
+            .time-display {
+                font-size: 1rem;
+                padding: 0.7rem 1.2rem;
             }
             
             .search-bar {
                 flex-direction: column;
                 align-items: center;
+                gap: 1.2rem;
             }
             
             .search-form {
@@ -218,71 +435,141 @@
             }
             
             main {
-                padding: 1.5rem 1rem 2rem;
+                padding: 2rem 1.2rem 2.5rem;
+            }
+            
+            .category-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
             }
             
             .category {
-                padding: 1.2rem 1rem 0.8rem;
+                padding: 1.5rem 1.2rem 1rem;
             }
             
             .category h2 {
-                font-size: 1.2rem;
+                font-size: 1.4rem;
+            }
+            
+            .card {
+                min-width: 200px;
+                padding: 1.2rem;
+            }
+            
+            .scroll-btn {
+                display: none;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.9rem;
+            }
+            
+            .time-display {
+                font-size: 0.9rem;
+                padding: 0.6rem 1rem;
+            }
+            
+            .category h2 {
+                font-size: 1.3rem;
             }
             
             .card {
                 min-width: 180px;
                 padding: 1rem 1.2rem;
             }
-        }
-        
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 1.8rem;
-            }
-            
-            .category h2 {
-                font-size: 1.1rem;
-            }
-            
-            .card {
-                min-width: 160px;
-                padding: 0.8rem 1rem;
-            }
             
             .card img {
-                width: 20px;
-                height: 20px;
+                width: 24px;
+                height: 24px;
             }
             
             .card span {
-                font-size: 0.9rem;
+                font-size: 0.95rem;
             }
         }
         
-        /* 滚动提示 */
-        .scroll-hint {
-            color: #6c757d;
-            font-size: 0.85rem;
-            text-align: right;
-            margin-top: 0.5rem;
-            font-style: italic;
+        /* 动画效果 */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .category {
+            animation: fadeIn 0.6s ease forwards;
+        }
+        
+        .category:nth-child(2) { animation-delay: 0.1s; }
+        .category:nth-child(3) { animation-delay: 0.2s; }
+        .category:nth-child(4) { animation-delay: 0.3s; }
+        .category:nth-child(5) { animation-delay: 0.4s; }
+        .category:nth-child(6) { animation-delay: 0.5s; }
+        .category:nth-child(7) { animation-delay: 0.6s; }
+        .category:nth-child(8) { animation-delay: 0.7s; }
+        .category:nth-child(9) { animation-delay: 0.8s; }
+        .category:nth-child(10) { animation-delay: 0.9s; }
+        .category:nth-child(11) { animation-delay: 1.0s; }
+        
+        /* 工具提示 */
+        .tooltip {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 4px;
+            padding: 5px 10px;
+            position: absolute;
+            z-index: 100;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 0.8rem;
+            white-space: nowrap;
+        }
+        
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
         }
     </style>
 </head>
 <body>
     <header>
         <div class="header-container">
-            <h1>Nastyoak的导航页</h1>
-            <div class="time-display" id="currentTime">当前时间：<span id="clock"></span></div>
+            <h1><i class="fas fa-compass"></i> Nastyoak的个人导航</h1>
+            <div class="subtitle">一站式工作与学习入口 | 高效从这里开始</div>
+            <div class="time-display" id="currentTime">
+                <span id="greeting"></span> 现在时间：<span id="clock"></span>
+            </div>
             
             <div class="search-bar">
                 <form action="https://www.baidu.com/s" method="get" target="_blank" class="search-form">
-                    <input type="text" name="wd" placeholder="百度搜索..." required>
-                    <button type="submit">🔍</button>
+                    <select name="engine" onchange="changeSearchEngine(this)">
+                        <option value="baidu">百度</option>
+                        <option value="google">Google</option>
+                        <option value="bing">Bing</option>
+                        <option value="duckduckgo">DuckDuckGo</option>
+                    </select>
+                    <input type="text" name="wd" id="search-input" placeholder="搜索你想要的内容..." required>
+                    <button type="submit"><i class="fas fa-search"></i></button>
                 </form>
+                
                 <form action="https://www.google.com/search" method="get" target="_blank" class="search-form">
-                    <input type="text" name="q" placeholder="Google搜索..." required>
-                    <button type="submit">🔎</button>
+                    <input type="text" name="q" placeholder="Google 搜索..." required>
+                    <button type="submit"><i class="fas fa-search"></i></button>
                 </form>
             </div>
         </div>
@@ -292,151 +579,203 @@
         <div class="category-container">
             <!-- VPS 分类 -->
             <section class="category">
-                <h2>VPS</h2>
-                <div class="cards">
-                    <a href="https://dash.cloudflare.com/" class="card" target="_blank" rel="noopener">
-                        <img src="https://www.google.com/s2/favicons?domain=cloudflare.com">
-                        <span>Cloudflare Dash</span>
-                    </a>
-                    <a href="https://clients.zgovps.com/" class="card" target="_blank" rel="noopener">
-                        <img src="https://www.google.com/s2/favicons?domain=zgovps.com">
-                        <span>ZGovPS</span>
-                    </a>
-                    <a href="https://kejilion.sh/index-zh-CN.html" class="card" target="_blank" rel="noopener">
-                        <img src="https://www.google.com/s2/favicons?domain=kejilion.sh">
-                        <span>Kejilion BBR加速工具</span>
-                    </a>
-                    <a href="https://www.colocrossing.com/" class="card" target="_blank" rel="noopener">
-                        <img src="https://www.google.com/s2/favicons?domain=colocrossing.com">
-                        <span>Colocrossing</span>
-                    </a>
-                    <a href="https://cloudcone.com/" class="card" target="_blank" rel="noopener">
-                        <img src="https://www.google.com/s2/favicons?domain=cloudcone.com">
-                        <span>CloudCone</span>
-                    </a>
+                <h2><i class="fas fa-server"></i> VPS 服务器</h2>
+                <div class="cards-wrapper">
+                    <button class="scroll-btn left" onclick="scrollCards(this, -1)"><i class="fas fa-chevron-left"></i></button>
+                    <div class="cards">
+                        <a href="https://dash.cloudflare.com/" class="card" target="_blank" rel="noopener">
+                            <img src="https://www.google.com/s2/favicons?domain=cloudflare.com&sz=32">
+                            <span>Cloudflare 面板</span>
+                        </a>
+                        <a href="https://clients.zgovps.com/" class="card" target="_blank" rel="noopener">
+                            <img src="https://www.google.com/s2/favicons?domain=zgovps.com&sz=32">
+                            <span>ZGovPS 控制台</span>
+                        </a>
+                        <a href="https://kejilion.sh/index-zh-CN.html" class="card" target="_blank" rel="noopener">
+                            <img src="https://www.google.com/s2/favicons?domain=kejilion.sh&sz=32">
+                            <span>科吉里翁 BBR工具</span>
+                        </a>
+                        <a href="https://www.colocrossing.com/" class="card" target="_blank" rel="noopener">
+                            <img src="https://www.google.com/s2/favicons?domain=colocrossing.com&sz=32">
+                            <span>Colocrossing</span>
+                        </a>
+                        <a href="https://cloudcone.com/" class="card" target="_blank" rel="noopener">
+                            <img src="https://www.google.com/s2/favicons?domain=cloudcone.com&sz=32">
+                            <span>CloudCone</span>
+                        </a>
+                        <a href="https://www.vultr.com/" class="card" target="_blank" rel="noopener">
+                            <img src="https://www.google.com/s2/favicons?domain=vultr.com&sz=32">
+                            <span>Vultr</span>
+                        </a>
+                    </div>
+                    <button class="scroll-btn right" onclick="scrollCards(this, 1)"><i class="fas fa-chevron-right"></i></button>
                 </div>
-                <div class="scroll-hint">← 左右滚动查看更多 →</div>
+                <div class="scroll-hint">← 使用左右按钮或拖动滚动查看更多 →</div>
             </section>
 
             <!-- 域名分类 -->
             <section class="category">
-                <h2>域名</h2>
+                <h2><i class="fas fa-globe"></i> 域名管理</h2>
                 <div class="cards">
                     <a href="https://dash.domain.digitalplat.org/" class="card" target="_blank" rel="noopener">
-                        <img src="https://www.google.com/s2/favicons?domain=digitalplat.org">
-                        <span>DigitalPlat Dash</span>
+                        <img src="https://www.google.com/s2/favicons?domain=digitalplat.org&sz=32">
+                        <span>DigitalPlat 面板</span>
+                    </a>
+                    <a href="https://www.namecheap.com/" class="card" target="_blank" rel="noopener">
+                        <img src="https://www.google.com/s2/favicons?domain=namecheap.com&sz=32">
+                        <span>Namecheap</span>
+                    </a>
+                    <a href="https://www.godaddy.com/" class="card" target="_blank" rel="noopener">
+                        <img src="https://www.google.com/s2/favicons?domain=godaddy.com&sz=32">
+                        <span>GoDaddy</span>
                     </a>
                 </div>
             </section>
 
             <!-- VPS购买推荐 -->
             <section class="category">
-                <h2>VPS购买推荐</h2>
+                <h2><i class="fas fa-shopping-cart"></i> VPS推荐与监控</h2>
                 <div class="cards">
                     <a href="https://stock.hostmonit.com/" class="card" target="_blank" rel="noopener">
-                        <img src="https://www.google.com/s2/favicons?domain=hostmonit.com">
-                        <span>HostMonit Stock</span>
+                        <img src="https://www.google.com/s2/favicons?domain=hostmonit.com&sz=32">
+                        <span>HostMonit 库存监控</span>
+                    </a>
+                    <a href="https://lowendtalk.com/" class="card" target="_blank" rel="noopener">
+                        <img src="https://www.google.com/s2/favicons?domain=lowendtalk.com&sz=32">
+                        <span>LowEndTalk 论坛</span>
                     </a>
                 </div>
             </section>
 
             <!-- AI工具 -->
             <section class="category">
-                <h2>AI工具</h2>
+                <h2><i class="fas fa-robot"></i> AI 工具与模型</h2>
                 <div class="cards">
                     <a href="https://chat.openai.com" class="card" target="_blank" rel="noopener">
-                        <img src="https://www.google.com/s2/favicons?domain=openai.com">
+                        <img src="https://www.google.com/s2/favicons?domain=openai.com&sz=32">
                         <span>ChatGPT</span>
                     </a>
                     <a href="https://huggingface.co" class="card" target="_blank" rel="noopener">
-                        <img src="https://www.google.com/s2/favicons?domain=huggingface.co">
+                        <img src="https://www.google.com/s2/favicons?domain=huggingface.co&sz=32">
                         <span>HuggingFace</span>
+                    </a>
+                    <a href="https://claude.ai" class="card" target="_blank" rel="noopener">
+                        <img src="https://www.google.com/s2/favicons?domain=claude.ai&sz=32">
+                        <span>Claude AI</span>
                     </a>
                 </div>
             </section>
 
             <!-- 视频社区 -->
             <section class="category">
-                <h2>视频</h2>
+                <h2><i class="fas fa-video"></i> 视频与娱乐</h2>
                 <div class="cards">
                     <a href="https://www.bilibili.com/" class="card" target="_blank" rel="noopener">
-                        <img src="https://www.google.com/s2/favicons?domain=bilibili.com">
-                        <span>Bilibili</span>
+                        <img src="https://www.google.com/s2/favicons?domain=bilibili.com&sz=32">
+                        <span>哔哩哔哩</span>
+                    </a>
+                    <a href="https://www.youtube.com/" class="card" target="_blank" rel="noopener">
+                        <img src="https://www.google.com/s2/favicons?domain=youtube.com&sz=32">
+                        <span>YouTube</span>
                     </a>
                 </div>
             </section>
 
             <!-- 社交聚合 -->
             <section class="category">
-                <h2>社交内容聚合社区</h2>
+                <h2><i class="fas fa-users"></i> 社交与社区</h2>
                 <div class="cards">
                     <a href="https://www.reddit.com/" class="card" target="_blank" rel="noopener">
-                        <img src="https://www.google.com/s2/favicons?domain=reddit.com">
+                        <img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=32">
                         <span>Reddit</span>
+                    </a>
+                    <a href="https://news.ycombinator.com/" class="card" target="_blank" rel="noopener">
+                        <img src="https://www.google.com/s2/favicons?domain=ycombinator.com&sz=32">
+                        <span>Hacker News</span>
                     </a>
                 </div>
             </section>
 
             <!-- 图像灵感 -->
             <section class="category">
-                <h2>图像发现与灵感平台</h2>
+                <h2><i class="fas fa-palette"></i> 设计与灵感</h2>
                 <div class="cards">
                     <a href="https://www.pinterest.com/" class="card" target="_blank" rel="noopener">
-                        <img src="https://www.google.com/s2/favicons?domain=pinterest.com">
+                        <img src="https://www.google.com/s2/favicons?domain=pinterest.com&sz=32">
                         <span>Pinterest</span>
+                    </a>
+                    <a href="https://dribbble.com/" class="card" target="_blank" rel="noopener">
+                        <img src="https://www.google.com/s2/favicons?domain=dribbble.com&sz=32">
+                        <span>Dribbble</span>
                     </a>
                 </div>
             </section>
 
             <!-- 工具/技术测试 -->
             <section class="category">
-                <h2>工具/技术测试</h2>
+                <h2><i class="fas fa-tools"></i> 网络与测试工具</h2>
                 <div class="cards">
                     <a href="https://test.ustc.edu.cn/" class="card" target="_blank" rel="noopener">
-                        <img src="https://www.google.com/s2/favicons?domain=ustc.edu.cn">
+                        <img src="https://www.google.com/s2/favicons?domain=ustc.edu.cn&sz=32">
                         <span>中科大测速</span>
                     </a>
                     <a href="https://test-ipv6.com/index.html.zh_CN" class="card" target="_blank" rel="noopener">
-                        <img src="https://www.google.com/s2/favicons?domain=test-ipv6.com">
+                        <img src="https://www.google.com/s2/favicons?domain=test-ipv6.com&sz=32">
                         <span>IPv6 测试</span>
+                    </a>
+                    <a href="https://www.speedtest.net/" class="card" target="_blank" rel="noopener">
+                        <img src="https://www.google.com/s2/favicons?domain=speedtest.net&sz=32">
+                        <span>Speedtest</span>
                     </a>
                 </div>
             </section>
 
             <!-- 技术资源分类 -->
             <section class="category">
-                <h2>技术资源</h2>
-                <div class="cards">
-                    <a href="https://developer.mozilla.org/zh-CN/" class="card" target="_blank" rel="noopener">
-                        <img src="https://www.google.com/s2/favicons?domain=developer.mozilla.org">
-                        <span>MDN Web Docs</span>
-                    </a>
-                    <a href="https://stackoverflow.com/" class="card" target="_blank" rel="noopener">
-                        <img src="https://www.google.com/s2/favicons?domain=stackoverflow.com">
-                        <span>Stack Overflow</span>
-                    </a>
-                    <a href="https://github.com/" class="card" target="_blank" rel="noopener">
-                        <img src="https://www.google.com/s2/favicons?domain=github.com">
-                        <span>GitHub</span>
-                    </a>
+                <h2><i class="fas fa-code"></i> 开发者资源</h2>
+                <div class="cards-wrapper">
+                    <button class="scroll-btn left" onclick="scrollCards(this, -1)"><i class="fas fa-chevron-left"></i></button>
+                    <div class="cards">
+                        <a href="https://developer.mozilla.org/zh-CN/" class="card" target="_blank" rel="noopener">
+                            <img src="https://www.google.com/s2/favicons?domain=developer.mozilla.org&sz=32">
+                            <span>MDN Web Docs</span>
+                        </a>
+                        <a href="https://stackoverflow.com/" class="card" target="_blank" rel="noopener">
+                            <img src="https://www.google.com/s2/favicons?domain=stackoverflow.com&sz=32">
+                            <span>Stack Overflow</span>
+                        </a>
+                        <a href="https://github.com/" class="card" target="_blank" rel="noopener">
+                            <img src="https://www.google.com/s2/favicons?domain=github.com&sz=32">
+                            <span>GitHub</span>
+                        </a>
+                        <a href="https://devdocs.io/" class="card" target="_blank" rel="noopener">
+                            <img src="https://www.google.com/s2/favicons?domain=devdocs.io&sz=32">
+                            <span>DevDocs</span>
+                        </a>
+                        <a href="https://codepen.io/" class="card" target="_blank" rel="noopener">
+                            <img src="https://www.google.com/s2/favicons?domain=codepen.io&sz=32">
+                            <span>CodePen</span>
+                        </a>
+                    </div>
+                    <button class="scroll-btn right" onclick="scrollCards(this, 1)"><i class="fas fa-chevron-right"></i></button>
                 </div>
-                <div class="scroll-hint">← 左右滚动查看更多 →</div>
+                <div class="scroll-hint">← 拖动查看更多开发资源 →</div>
             </section>
 
             <!-- 学习提升分类 -->
             <section class="category">
-                <h2>学习提升</h2>
+                <h2><i class="fas fa-graduation-cap"></i> 学习与提升</h2>
                 <div class="cards">
                     <a href="https://www.coursera.org/" class="card" target="_blank" rel="noopener">
-                        <img src="https://www.google.com/s2/favicons?domain=coursera.org">
+                        <img src="https://www.google.com/s2/favicons?domain=coursera.org&sz=32">
                         <span>Coursera</span>
                     </a>
                     <a href="https://www.youtube.com/" class="card" target="_blank" rel="noopener">
-                        <img src="https://www.google.com/s2/favicons?domain=youtube.com">
+                        <img src="https://www.google.com/s2/favicons?domain=youtube.com&sz=32">
                         <span>YouTube教程</span>
                     </a>
                     <a href="https://zhuanlan.zhihu.com/" class="card" target="_blank" rel="noopener">
-                        <img src="https://www.google.com/s2/favicons?domain=zhuanlan.zhihu.com">
+                        <img src="https://www.google.com/s2/favicons?domain=zhuanlan.zhihu.com&sz=32">
                         <span>知乎专栏</span>
                     </a>
                 </div>
@@ -444,18 +783,18 @@
 
             <!-- 生活工具分类 -->
             <section class="category">
-                <h2>生活工具</h2>
+                <h2><i class="fas fa-life-ring"></i> 生活与效率工具</h2>
                 <div class="cards">
                     <a href="https://www.google.com/calendar" class="card" target="_blank" rel="noopener">
-                        <img src="https://www.google.com/s2/favicons?domain=google.com">
+                        <img src="https://www.google.com/s2/favicons?domain=google.com&sz=32">
                         <span>Google日历</span>
                     </a>
                     <a href="https://www.evernote.com/" class="card" target="_blank" rel="noopener">
-                        <img src="https://www.google.com/s2/favicons?domain=evernote.com">
+                        <img src="https://www.google.com/s2/favicons?domain=evernote.com&sz=32">
                         <span>印象笔记</span>
                     </a>
                     <a href="https://www.trello.com/" class="card" target="_blank" rel="noopener">
-                        <img src="https://www.google.com/s2/favicons?domain=trello.com">
+                        <img src="https://www.google.com/s2/favicons?domain=trello.com&sz=32">
                         <span>Trello看板</span>
                     </a>
                 </div>
@@ -463,18 +802,18 @@
 
             <!-- 开发者工具分类 -->
             <section class="category">
-                <h2>开发者工具</h2>
+                <h2><i class="fas fa-laptop-code"></i> 开发工具</h2>
                 <div class="cards">
                     <a href="https://code.visualstudio.com/" class="card" target="_blank" rel="noopener">
-                        <img src="https://www.google.com/s2/favicons?domain=code.visualstudio.com">
+                        <img src="https://www.google.com/s2/favicons?domain=code.visualstudio.com&sz=32">
                         <span>VS Code</span>
                     </a>
                     <a href="https://www.postman.com/" class="card" target="_blank" rel="noopener">
-                        <img src="https://www.google.com/s2/favicons?domain=postman.com">
+                        <img src="https://www.google.com/s2/favicons?domain=postman.com&sz=32">
                         <span>Postman</span>
                     </a>
                     <a href="https://www.ngrok.com/" class="card" target="_blank" rel="noopener">
-                        <img src="https://www.google.com/s2/favicons?domain=ngrok.com">
+                        <img src="https://www.google.com/s2/favicons?domain=ngrok.com&sz=32">
                         <span>Ngrok</span>
                     </a>
                 </div>
@@ -483,21 +822,46 @@
     </main>
 
     <footer>
-        © 2026 Nastyoak的导航页
+        <div class="footer-content">
+            <p>© 2026 Nastyoak的个人导航页 | 最后更新: 2026年2月6日</p>
+            <div class="footer-links">
+                <a href="#" onclick="alert('功能开发中...')">关于本站</a>
+                <a href="#" onclick="alert('功能开发中...')">使用说明</a>
+                <a href="#" onclick="alert('功能开发中...')">建议反馈</a>
+                <a href="javascript:location.reload()">刷新页面</a>
+            </div>
+            <p style="margin-top: 0.5rem; font-size: 0.85rem; opacity: 0.8;">共 <span id="siteCount">0</span> 个站点 | 已为您服务 <span id="visitTime">0</span> 秒</p>
+        </div>
     </footer>
 
     <script>
-        // 获取时间元素
+        // 获取DOM元素
         const timeElement = document.getElementById('clock');
+        const greetingElement = document.getElementById('greeting');
+        const siteCountElement = document.getElementById('siteCount');
+        const visitTimeElement = document.getElementById('visitTime');
         
         // 星期名称映射
         const weekDays = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
         
+        // 根据时间返回问候语
+        function getGreeting() {
+            const hour = new Date().getHours();
+            if (hour < 5) return '深夜好';
+            if (hour < 9) return '早上好';
+            if (hour < 12) return '上午好';
+            if (hour < 14) return '中午好';
+            if (hour < 18) return '下午好';
+            if (hour < 22) return '晚上好';
+            return '夜深了';
+        }
+        
+        // 更新时间显示
         function updateTime() {
             const now = new Date();
             // 格式化时间组件
             const year = now.getFullYear();
-            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const month = String(now.getFullYear() + 1).padStart(2, '0');
             const day = String(now.getDate()).padStart(2, '0');
             const hours = String(now.getHours()).padStart(2, '0');
             const minutes = String(now.getMinutes()).padStart(2, '0');
@@ -507,11 +871,124 @@
             // 更新时间显示
             timeElement.innerHTML = `${year}年${month}月${day}日 ${weekDay} ${hours}:${minutes}:${seconds}`;
         }
-
-        // 首次加载立即显示时间
-        updateTime();
-        // 每秒更新时间
-        setInterval(updateTime, 1000);
+        
+        // 初始化站点计数
+        function countSites() {
+            const cards = document.querySelectorAll('.card');
+            siteCountElement.textContent = cards.length;
+        }
+        
+        // 更新访问时间
+        function updateVisitTime() {
+            if (!sessionStorage.visitStartTime) {
+                sessionStorage.visitStartTime = new Date().getTime();
+            }
+            
+            const startTime = parseInt(sessionStorage.visitStartTime);
+            const currentTime = new Date().getTime();
+            const seconds = Math.floor((currentTime - startTime) / 1000);
+            
+            // 格式化时间显示
+            if (seconds < 60) {
+                visitTimeElement.textContent = `${seconds}秒`;
+            } else if (seconds < 3600) {
+                const minutes = Math.floor(seconds / 60);
+                visitTimeElement.textContent = `${minutes}分钟`;
+            } else {
+                const hours = Math.floor(seconds / 3600);
+                const minutes = Math.floor((seconds % 3600) / 60);
+                visitTimeElement.textContent = `${hours}小时${minutes}分钟`;
+            }
+        }
+        
+        // 搜索引擎切换功能
+        function changeSearchEngine(select) {
+            const searchForm = select.closest('.search-form');
+            const searchInput = document.getElementById('search-input');
+            const searchButton = searchForm.querySelector('button[type="submit]');
+            
+            const engines = {
+                baidu: { action: 'https://www.baidu.com/s', name: 'wd', placeholder: '百度搜索...' },
+                google: { action: 'https://www.google.com/search', name: 'q', placeholder: 'Google搜索...' },
+                bing: { action: 'https://www.bing.com/search', name: 'q', placeholder: 'Bing搜索...' },
+                duckduckgo: { action: 'https://duckduckgo.com/', name: 'q', placeholder: 'DuckDuckGo搜索...' }
+            };
+            
+            const selectedEngine = engines[select.value];
+            if (selectedEngine) {
+                searchForm.action = selectedEngine.action;
+                searchInput.name = selectedEngine.name;
+                searchInput.placeholder = selectedEngine.placeholder;
+            }
+        }
+        
+        // 卡片横向滚动功能
+        function scrollCards(button, direction) {
+            const cardsWrapper = button.parentElement;
+            const cards = cardsWrapper.querySelector('.cards');
+            const scrollAmount = 300;
+            
+            cards.scrollBy({
+                left: direction * scrollAmount,
+                behavior: 'smooth'
+            });
+        }
+        
+        // 初始化函数
+        function init() {
+            // 设置问候语
+            greetingElement.textContent = getGreeting() + '，';
+            
+            // 首次加载立即显示时间
+            updateTime();
+            // 每秒更新时间
+            setInterval(updateTime, 1000);
+            
+            // 计算站点数量
+            countSites();
+            
+            // 每秒更新访问时间
+            updateVisitTime();
+            setInterval(updateVisitTime, 1000);
+            
+            // 为所有卡片添加点击动画
+            document.querySelectorAll('.card').forEach(card => {
+                card.addEventListener('click', function() {
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 200);
+                });
+            });
+            
+            // 自动隐藏滚动按钮
+            document.querySelectorAll('.cards-wrapper').forEach(wrapper => {
+                const cards = wrapper.querySelector('.cards');
+                const leftBtn = wrapper.querySelector('.scroll-btn.left');
+                const rightBtn = wrapper.querySelector('.scroll-btn.right');
+                
+                function updateScrollButtons() {
+                    leftBtn.style.opacity = cards.scrollLeft > 10 ? '1' : '0';
+                    rightBtn.style.opacity = 
+                        cards.scrollLeft < (cards.scrollWidth - cards.clientWidth - 10) ? '1' : '0';
+                }
+                
+                cards.addEventListener('scroll', updateScrollButtons);
+                wrapper.addEventListener('mouseenter', () => {
+                    updateScrollButtons();
+                });
+                
+                // 初始检查
+                updateScrollButtons();
+            });
+            
+            // 控制台欢迎信息
+            console.log('%c🔍 Nastyoak的个人导航页已加载完成！', 'color: #2e7d57; font-size: 16px; font-weight: bold;');
+            console.log('%c✨ 发现' + document.querySelectorAll('.card').length + '个精选站点', 'color: #3cb371;');
+        }
+        
+        // 页面加载完成后初始化
+        document.addEventListener('DOMContentLoaded', init);
     </script>
 </body>
 </html>
